@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm1ku01w54xb3"]
+[gd_scene load_steps=4 format=3 uid="uid://cm1ku01w54xb3"]
 
 [ext_resource type="PackedScene" uid="uid://dj7xs40ybe5hl" path="res://scenes/TestPlatform.tscn" id="1_chmcy"]
 [ext_resource type="PackedScene" uid="uid://dj70kpkttcguv" path="res://scenes/Player.tscn" id="2_4vcyk"]
+[ext_resource type="PackedScene" uid="uid://d2n787c4rn0w2" path="res://scenes/TestEnemy.tscn" id="3_1la1o"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -16,3 +17,9 @@ position = Vector2(276, 179)
 
 [node name="Player" parent="." instance=ExtResource("2_4vcyk")]
 position = Vector2(285, 497)
+
+[node name="TestEnemy" parent="." instance=ExtResource("3_1la1o")]
+position = Vector2(707, 465)
+
+[node name="TestPlatform4" parent="." instance=ExtResource("1_chmcy")]
+position = Vector2(749, 530)

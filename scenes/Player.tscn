@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dj70kpkttcguv"]
+[gd_scene load_steps=12 format=3 uid="uid://dj70kpkttcguv"]
 
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_aadot"]
 [ext_resource type="Texture2D" uid="uid://bth1kxfwp0fuj" path="res://sprites/player.png" id="1_akh48"]
@@ -54,6 +54,12 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_06m1h"]
 size = Vector2(20, 42)
 
+[sub_resource type="Gradient" id="Gradient_yl1yf"]
+offsets = PackedFloat32Array(0, 0.020979)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xa6hi"]
+gradient = SubResource("Gradient_yl1yf")
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_aadot")
 metadata/_edit_group_ = true
@@ -66,3 +72,11 @@ animation = &"running"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_06m1h")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(-3, -15)
+width = 3.0
+texture = SubResource("GradientTexture2D_xa6hi")
+texture_mode = 1
+joint_mode = 2

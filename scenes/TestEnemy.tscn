@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2n787c4rn0w2"]
+
+[ext_resource type="Script" path="res://scenes/TestEnemy.gd" id="1_1c4df"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0bsv"]
+size = Vector2(64, 60)
+
+[sub_resource type="Gradient" id="Gradient_dmo8o"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ju7e"]
+gradient = SubResource("Gradient_dmo8o")
+
+[node name="TestEnemy" type="CharacterBody2D"]
+script = ExtResource("1_1c4df")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_k0bsv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_0ju7e")

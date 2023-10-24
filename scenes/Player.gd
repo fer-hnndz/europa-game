@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -650.0
 var has_double_jump = true
 var last_bullet = 0
 var bullet_cooldown = 0.055
+var LASER_MAX_LENGTH = 250
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -13,17 +15,29 @@ func _ready():
 	print($Line2D.get_point_count())
 	
 func _physics_process(delta):
-	Engine.max_fps = 30
+	#Engine.max_fps = 30
 	#print(Engine.get_frames_per_second())
-	var player_pos = position
-	var mouse_pos = get_viewport().get_mouse_position() - player_pos
+	var player_pos = global_position
+	var mouse_pos = get_global_mouse_position() - player_pos
 	
-	#print("Distancia: ", player_pos.distance_to(mouse_pos))
+	#var laser_x = (LASER_MAX_LENGTH / mouse_pos.x) * mouse_pos.x
+	#var laser_y = (LASER_MAX_LENGTH / mouse_pos.y) * mouse_pos.y
+	#var laser_end = Vector2(laser_x, laser_y)
 	
+	var line_length = sqrt((mouse_pos.x * mouse_pos.x) + (mouse_pos.y * mouse_pos.y))	
+	var laser_x = (LASER_MAX_LENGTH * mouse_pos.x) / line_length
+	var laser_y = (LASER_MAX_LENGTH * mouse_pos.y) / line_length
+	var laser_end = Vector2(laser_x, laser_y)
+		
+	print("C = ", line_length)
+	
+		
 	if ($Line2D.get_point_count() != 1):
-		$Line2D.remove_point(1)		
+		$Line2D.remove_point(1)
 	
-	$Line2D.add_point(mouse_pos)
+	#$Line2D.add_point(mouse_pos)
+	$Line2D.add_point(laser_end)
+
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -40,7 +54,7 @@ func _physics_process(delta):
 			last_bullet = Time.get_unix_time_from_system()
 			var bulletNode = preload("res://scenes/Bullet.tscn")
 			var bullet_instance = bulletNode.instantiate()
-			bullet_instance.setObjective(mouse_pos)
+			bullet_instance.setObjective(player_pos.direction_to(mouse_pos) + mouse_pos)
 			var start_pos = global_position
 			
 			start_pos = Vector2(start_pos.x + 10, start_pos.y)

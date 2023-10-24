@@ -11,7 +11,8 @@ size = Vector2(64, 60)
 gradient = SubResource("Gradient_dmo8o")
 
 [node name="TestEnemy" type="CharacterBody2D"]
-collision_mask = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_1c4df")
 metadata/_edit_group_ = true
 

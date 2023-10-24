@@ -23,27 +23,13 @@ func _process(delta):
 #		return
 		
 	var velocity = Vector2(0, 0)
-	print(objective)
 	if (not lastCollition):
 		
-		var dir_x = 0
-		var dir_y = 0
-		
-		if (objective.x > 0):
-			dir_x = 1
-		else:
-			dir_x = -1;
-			
-			
-		if (abs(objective.y) >= 25):
-			objective.y = 0
-		if (objective.y > 0):
-			dir_y = 1
-		else:
-			dir_y = -1;
-			
-		velocity.x = dir_x * speed * delta
-		velocity.y = dir_y * speed * delta
+		var dir_x = objective.x
+		var dir_y = objective.y
+		print("Direcciones: ", dir_x, " ",dir_y)
+		velocity.x = dir_x * delta
+		velocity.y = dir_y * delta
 	else:
 		queue_free()
 	

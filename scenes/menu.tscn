@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqewe682vqg5q"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_bijon"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bijon")
+
+[node name="Play" type="Button" parent="."]
+layout_mode = 2
+offset_left = 541.0
+offset_top = 273.5
+offset_right = 611.0
+offset_bottom = 304.5
+text = "Jugar"
+
+[node name="Options" type="Button" parent="."]
+layout_mode = 2
+offset_left = 541.0
+offset_top = 308.5
+offset_right = 611.0
+offset_bottom = 339.5
+text = "Opciones"
+
+[node name="Logout" type="Button" parent="."]
+layout_mode = 2
+offset_left = 541.0
+offset_top = 343.5
+offset_right = 611.0
+offset_bottom = 374.5
+text = "Logout"
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Logout" to="." method="_on_quit_pressed"]

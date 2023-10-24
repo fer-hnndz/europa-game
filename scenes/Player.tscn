@@ -61,6 +61,7 @@ offsets = PackedFloat32Array(0, 0.020979)
 gradient = SubResource("Gradient_yl1yf")
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 9
 script = ExtResource("1_aadot")
 metadata/_edit_group_ = true
 

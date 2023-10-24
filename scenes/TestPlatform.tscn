@@ -9,6 +9,8 @@ size = Vector2(442, 36)
 gradient = SubResource("Gradient_2taw2")
 
 [node name="TestPlatform" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 8
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

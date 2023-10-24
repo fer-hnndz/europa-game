@@ -12,6 +12,8 @@ gradient = SubResource("Gradient_w1kgm")
 size = Vector2(8, 4)
 
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 10
 mass = 0.01
 script = ExtResource("1_xsvoe")
 metadata/_edit_group_ = true
@@ -22,3 +24,5 @@ texture = SubResource("GradientTexture2D_27537")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_vma7t")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

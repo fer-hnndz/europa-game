@@ -14,20 +14,17 @@ func setObjective(v: Vector2):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
 	if (objective == null):
-		print("Objective is null. Not processing")
 		return
 	
-#	if (not $VisibleOnScreenNotifier2D.is_on_screen()):
-#		print("Not on screen. Deleting...")
-#		queue_free()
-#		return
+	if (not $VisibleOnScreenNotifier2D.is_on_screen()):
+		# TODO: Verificar si se puede borrar la bala una vez no este en pantalla 
+		return
 		
 	var velocity = Vector2(0, 0)
 	if (not lastCollition):
 		
 		var dir_x = objective.x
 		var dir_y = objective.y
-		print("Direcciones: ", dir_x, " ",dir_y)
 		velocity.x = dir_x * delta
 		velocity.y = dir_y * delta
 	else:

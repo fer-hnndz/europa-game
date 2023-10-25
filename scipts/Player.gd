@@ -16,20 +16,23 @@ func _ready():
 	pass
 		
 func _process_laser(delta):
-	var player_pos = global_position
-	var mouse_pos = get_global_mouse_position() - player_pos
-	
-	var line_length = sqrt((mouse_pos.x * mouse_pos.x) + (mouse_pos.y * mouse_pos.y))	
-	var laser_x = (LASER_MAX_LENGTH * mouse_pos.x) / line_length
-	var laser_y = (LASER_MAX_LENGTH * mouse_pos.y) / line_length
-	var laser_end = Vector2(laser_x, laser_y)
-
+	var laser_end = _get_laser_endpoint()
 		
 	if ($Line2D.get_point_count() != 1):
 		$Line2D.remove_point(1)
 	
 	#$Line2D.add_point(mouse_pos)
 	$Line2D.add_point(laser_end)
+	
+func _get_laser_endpoint() -> Vector2:
+	var player_pos = global_position
+	var mouse_pos = get_global_mouse_position() - player_pos
+	
+	var line_length = sqrt((mouse_pos.x * mouse_pos.x) + (mouse_pos.y * mouse_pos.y))	
+	var laser_x = (LASER_MAX_LENGTH * mouse_pos.x) / line_length
+	var laser_y = (LASER_MAX_LENGTH * mouse_pos.y) / line_length
+	return Vector2(laser_x, laser_y)
+	
 func _physics_process(delta):
 	_process_laser(delta)
 
@@ -49,13 +52,14 @@ func _physics_process(delta):
 			last_bullet = Time.get_unix_time_from_system()
 			
 			# Cargar la bala y ubicarla para disparar
-			var bullet_instance = preload("res://scenes/Bullet.tscn").instantiate()
+			var bullet_instance = preload("res://scenes/characters/Bullet.tscn").instantiate()
 			var player_pos = global_position
-			var mouse_pos = get_global_mouse_position() - player_pos
-			bullet_instance.global_position = Vector2(player_pos.x, player_pos.y)
+			bullet_instance.global_position = Vector2(player_pos.x + 10, player_pos.y)
 			
 			get_parent().add_child(bullet_instance)
-			bullet_instance.setObjective(player_pos.direction_to(mouse_pos) + mouse_pos)
+			#bullet_instance.setObjective(player_pos.direction(mouse))
+			bullet_instance.setObjective(player_pos.direction_to(_get_laser_endpoint()) + _get_laser_endpoint())
+			var point_pos = $Line2D.get_point_position(1)
 			
 
 	# Handle Jump.

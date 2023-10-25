@@ -5,12 +5,17 @@ extends CharacterBody2D
 var player
 var SPEED = 2.5
 var gravity
+var health = 18
 func _ready():
 	gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 	player = get_parent().get_node("Player")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (health <= 0):
+		queue_free()
+		return
+	
 	var player_pos = player.global_position
 	var velocity = global_position.direction_to(player_pos)
 

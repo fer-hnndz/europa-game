@@ -5,16 +5,22 @@ extends RigidBody2D
 var speed = 150
 var lastCollition = null
 var objective = null
+var damage = 3
+var stage = -1
+
+
 func _ready():
 	pass # Replace with function body.
 
 func setObjective(v: Vector2):
 	objective = v
-	
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):	
 	if (objective == null):
 		return
+	
 	
 	if (not $VisibleOnScreenNotifier2D.is_on_screen()):
 		# TODO: Verificar si se puede borrar la bala una vez no este en pantalla 
@@ -28,7 +34,17 @@ func _process(delta):
 		velocity.x = dir_x * delta
 		velocity.y = dir_y * delta
 	else:
+		var col = lastCollition.get_collider()
+		
+		if (col == null):
+			print("La ultima colision es null???")
+			queue_free()			
+			return
+		
+		if (col.get_class() == "CharacterBody2D"):
+			col.health -= damage
 		queue_free()
+		return
 	
 	velocity.normalized()
 	lastCollition = move_and_collide(velocity)

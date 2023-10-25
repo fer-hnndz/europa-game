@@ -25,7 +25,7 @@ func _on_login_button_down():
 			
 			if $Password.text.sha256_text() == password:
 				print("Correct password")
-				get_tree().change_scene_to_file("res://menu.tscn")
+				get_tree().change_scene_to_file("res://scenes/menus//menu.tscn")
 			else:
 				show_message("Login failed! Please check your password.")
 		else: 

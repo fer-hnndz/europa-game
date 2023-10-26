@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dj70kpkttcguv"]
+[gd_scene load_steps=22 format=3 uid="uid://dj70kpkttcguv"]
 
 [ext_resource type="Script" path="res://scipts/Player.gd" id="1_aadot"]
 [ext_resource type="Texture2D" uid="uid://nfbtq2o0ived" path="res://sprites/playerx1.png" id="3_jni3i"]
@@ -18,6 +18,10 @@ region = Rect2(64, 160, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hctmy"]
 atlas = ExtResource("3_jni3i")
 region = Rect2(96, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkf4q"]
+atlas = ExtResource("3_jni3i")
+region = Rect2(128, 416, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a3cuu"]
 atlas = ExtResource("3_jni3i")
@@ -71,8 +75,11 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hmrkc")
 }, {
-"duration": 1.0,
+"duration": 2.5,
 "texture": SubResource("AtlasTexture_hctmy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkf4q")
 }],
 "loop": false,
 "name": &"death",

@@ -40,7 +40,7 @@ func _get_laser_endpoint() -> Vector2:
 	return Vector2(laser_x, laser_y)
 		
 func _physics_process(delta):
-	if ($AnimatedSprite2D.frame == 4 and spawned == false):
+	if ($AnimatedSprite2D.frame == 4 and spawned == false and $AnimatedSprite2D.animation != "death"):
 		spawned = true
 		$AnimatedSprite2D.animation = "idle"
 		$AnimatedSprite2D.play()
@@ -49,7 +49,7 @@ func _physics_process(delta):
 		print("Ya se puede mover")
 	
 	
-	if ($AnimatedSprite2D.animation == "death" and $AnimatedSprite2D.frame ==  3):
+	if ($AnimatedSprite2D.animation == "death" and $AnimatedSprite2D.frame ==  4):
 		#get_parent().get_node("PlayerUI").queue_free()
 		var death_screen = load("res://scenes/menus/DeathScreen.tscn").instantiate()
 		get_parent().add_child(death_screen)

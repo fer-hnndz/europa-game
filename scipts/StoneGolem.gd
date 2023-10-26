@@ -8,6 +8,7 @@ var damage = 4
 var ATTACK_STALL = 0.5
 var last_attack = 0
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite2D.animation = "spawn"
@@ -15,8 +16,8 @@ func _ready():
 	$AnimatedSprite2D.play()
 	player = get_parent().get_node("Player")	
 	
-func add_damage(damage: float) -> void:
-	health -= damage
+func add_damage(new_damage: float) -> void:
+	health -= new_damage
 	var t = Timer.new()
 	
 	t.set_one_shot(true)
@@ -50,6 +51,7 @@ func _process(delta):
 		$AnimatedSprite2D.play()
 		
 	if (health <= 0):
+		print("Se murio golem")
 		queue_free()
 	
 	if (player.current_health <= 0):
@@ -58,8 +60,10 @@ func _process(delta):
 	var player_pos = player.global_position
 	var velocity = global_position.direction_to(player_pos)
 
-	if (Time.get_unix_time_from_system() <= last_attack + ATTACK_STALL):
+	# No mover mientras no se haya completado el stall de
+	if (Time.get_unix_time_from_system() <= self.last_attack + ATTACK_STALL):
 		velocity = Vector2(0, 0)
+	
 		
 	if (last_col):
 		var col = last_col.get_collider()	
@@ -77,7 +81,7 @@ func _process(delta):
 			col.move_and_slide()
 			
 			velocity = Vector2(0, 0)
-			last_attack = Time.get_unix_time_from_system()
+			self.last_attack = Time.get_unix_time_from_system()
 	
 	
 	last_col = move_and_collide(velocity * SPEED)

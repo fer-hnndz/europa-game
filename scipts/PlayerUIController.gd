@@ -11,7 +11,5 @@ func _ready():
 func _process(delta):
 	var player = get_parent().get_child(0)
 	$HealthBar.max_value = player.MAX_HEALTH
-	player.current_health -= 0.09
 	$HealthBar.value = player.current_health
 	$HealthLabel.text = str(player.current_health) + "/" + str(player.MAX_HEALTH)
-	print(player.current_health)

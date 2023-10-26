@@ -5,16 +5,20 @@ const SPEED = 300.0
 const JUMP_VELOCITY = -650.0
 var has_double_jump = true
 var last_bullet = 0
+
 var bullet_cooldown = 0.055
 var LASER_MAX_LENGTH = 250
 var current_health = 35
 var MAX_HEALTH = 35
+var spawned = false
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	$AnimatedSprite2D.animation = "spawn"
+	$AnimatedSprite2D.play()
 	#print($Line2D.get_point_count())
-	pass
 		
 func _process_laser(delta):
 	var laser_end = _get_laser_endpoint()
@@ -33,9 +37,25 @@ func _get_laser_endpoint() -> Vector2:
 	var laser_x = (LASER_MAX_LENGTH * mouse_pos.x) / line_length
 	var laser_y = (LASER_MAX_LENGTH * mouse_pos.y) / line_length
 	return Vector2(laser_x, laser_y)
+
+func _process_damage(delta):
+	pass
+	
 	
 func _physics_process(delta):
+	if ($AnimatedSprite2D.frame == 4 and spawned == false):
+		spawned = true
+		$AnimatedSprite2D.animation = "idle"
+		$AnimatedSprite2D.play()
+		print("Ya se puede mover")
+		print("Ya se puede mover")
+		print("Ya se puede mover")
+	
+	if (spawned == false):
+		return
+	
 	_process_laser(delta)
+	_process_damage(delta)
 
 	# Add the gravity.
 	if not is_on_floor():
@@ -85,8 +105,6 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 	# Animations
-	
-	
 	if velocity.x > 0:
 		get_node("AnimatedSprite2D").animation = "running"
 		get_node("AnimatedSprite2D").flip_h = false

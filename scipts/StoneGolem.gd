@@ -17,6 +17,9 @@ func _ready():
 	player = get_parent().get_node("Player")	
 	
 func add_damage(new_damage: float) -> void:
+	if (not spawned):
+		return
+		
 	health -= new_damage
 	var t = Timer.new()
 	
@@ -62,27 +65,28 @@ func _process(delta):
 
 	# No mover mientras no se haya completado el stall de
 	if (Time.get_unix_time_from_system() <= self.last_attack + ATTACK_STALL):
+		print("NO HA PASADO ATTACK STALL")
 		velocity = Vector2(0, 0)
 	
-		
+	
+
 	if (last_col):
 		var col = last_col.get_collider()	
-		if (col == null):
-			return
-
-		if (col.name == "Player" and velocity.x != 0 and velocity.y != 0):
-			col.current_health -= 4
-			
-			var vel = Vector2(0, 0)
-			vel.x = (col.SPEED / 2) * (velocity.x / abs(velocity.x) )
-			vel.y = (col.gravity / 2) * (velocity.y / abs(velocity.y))  
-			
-			col.velocity = vel
-			col.move_and_slide()
-			
-			velocity = Vector2(0, 0)
-			self.last_attack = Time.get_unix_time_from_system()
-	
+		if (col != null):
+			if (col.name == "Player" and velocity.x != 0 and velocity.y != 0):
+				col.current_health -= 4
+				
+				var vel = Vector2(0, 0)
+				vel.x = (col.SPEED / 2) * (velocity.x / abs(velocity.x) )
+				vel.y = (col.gravity / 2) * (velocity.y / abs(velocity.y))  
+				
+				col.velocity = vel
+				col.move_and_slide()
+				
+				velocity = Vector2(0, 0)
+				self.last_attack = Time.get_unix_time_from_system()
+			else:
+				print("Choco con attack stall on")
 	
 	last_col = move_and_collide(velocity * SPEED)
 	

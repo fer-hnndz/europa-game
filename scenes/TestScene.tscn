@@ -34,7 +34,7 @@ position = Vector2(795, 227)
 position = Vector2(749, 530)
 
 [node name="EnemyStoneGolem" parent="." instance=ExtResource("7_hasi8")]
-position = Vector2(374, 106)
+position = Vector2(524, 440)
 
 [node name="wall_left" parent="." instance=ExtResource("1_chmcy")]
 position = Vector2(-28, 377)
@@ -51,7 +51,7 @@ position = Vector2(3241.48, -60)
 scale = Vector2(20.7936, 1)
 
 [node name="wall_bot" parent="." instance=ExtResource("1_chmcy")]
-position = Vector2(663, 736)
+position = Vector2(637, 787)
 scale = Vector2(4.56, 1)
 
 [node name="EuropaBg" type="Sprite2D" parent="."]

@@ -10,7 +10,7 @@ var bullet_cooldown = 0.055
 var LASER_MAX_LENGTH = 250
 var current_health = 35
 var MAX_HEALTH = 35
-var spawned = false
+var spawned = true
 var last_colission
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

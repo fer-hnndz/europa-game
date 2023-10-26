@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://ccileymwip7dk"]
 
 [ext_resource type="Texture2D" uid="uid://ilxgijol4b5j" path="res://sprites/stone_golem.png" id="1_4ohqy"]
-[ext_resource type="Script" path="res://scenes/characters/StoneGolem.gd" id="1_r70ab"]
+[ext_resource type="Script" path="res://scipts/StoneGolem.gd" id="1_idwr0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_516st"]
 atlas = ExtResource("1_4ohqy")
@@ -136,11 +136,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg1pw"]
 size = Vector2(48, 46)
 
-[node name="StoneGolem" type="CharacterBody2D"]
+[node name="EnemyStoneGolem" type="CharacterBody2D"]
 scale = Vector2(1.7, 1.7)
 collision_layer = 4
-collision_mask = 3
-script = ExtResource("1_r70ab")
+collision_mask = 7
+script = ExtResource("1_idwr0")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

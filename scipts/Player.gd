@@ -11,6 +11,7 @@ var LASER_MAX_LENGTH = 250
 var current_health = 35
 var MAX_HEALTH = 35
 var spawned = false
+var last_colission
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -37,11 +38,7 @@ func _get_laser_endpoint() -> Vector2:
 	var laser_x = (LASER_MAX_LENGTH * mouse_pos.x) / line_length
 	var laser_y = (LASER_MAX_LENGTH * mouse_pos.y) / line_length
 	return Vector2(laser_x, laser_y)
-
-func _process_damage(delta):
-	pass
-	
-	
+		
 func _physics_process(delta):
 	if ($AnimatedSprite2D.frame == 4 and spawned == false):
 		spawned = true
@@ -51,12 +48,25 @@ func _physics_process(delta):
 		print("Ya se puede mover")
 		print("Ya se puede mover")
 	
+	
+	if ($AnimatedSprite2D.animation == "death" and $AnimatedSprite2D.frame ==  3):
+		#get_parent().get_node("PlayerUI").queue_free()
+		var death_screen = load("res://scenes/menus/DeathScreen.tscn").instantiate()
+		get_parent().add_child(death_screen)
+		
 	if (spawned == false):
 		return
 	
+	if (current_health <= 0):
+		print("Tu ta muelto broder")
+		$AnimatedSprite2D.animation = "death"
+		$AnimatedSprite2D.frame = 0
+		$AnimatedSprite2D.play()
+		spawned = false
+		return
+			
 	_process_laser(delta)
-	_process_damage(delta)
-
+	
 	# Add the gravity.
 	if not is_on_floor():
 		$AnimatedSprite2D.stop()
@@ -117,4 +127,5 @@ func _physics_process(delta):
 	elif velocity.x == 0:
 		#print("idle")
 		get_node("AnimatedSprite2D").animation = "idle"
+	
 	move_and_slide()

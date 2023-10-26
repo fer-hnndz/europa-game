@@ -14,11 +14,12 @@ var stages = {
 		"enemies": [preload("res://scenes/characters/TestEnemy.tscn"), 
 					preload("res://scenes/characters/TestEnemy.tscn"), 
 					preload("res://scenes/characters/TestEnemy.tscn"), 
-					preload("res://scenes/characters/TestEnemy.tscn"), 
-					preload("res://scenes/characters/TestEnemy.tscn"), 
-					preload("res://scenes/characters/TestEnemy.tscn"), 
-					preload("res://scenes/characters/TestEnemy.tscn"), 
-					preload("res://scenes/characters/TestEnemy.tscn")
+					preload("res://scenes/characters/StoneGolem.tscn"), 
+					preload("res://scenes/characters/StoneGolem.tscn"), 
+					preload("res://scenes/characters/StoneGolem.tscn"), 
+					preload("res://scenes/characters/StoneGolem.tscn"), 
+					preload("res://scenes/characters/StoneGolem.tscn"), 
+					
 		]
 	}
 }

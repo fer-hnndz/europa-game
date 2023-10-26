@@ -21,11 +21,6 @@ func _process(delta):
 	if (objective == null):
 		return
 	
-	
-	if (not $VisibleOnScreenNotifier2D.is_on_screen()):
-		# TODO: Verificar si se puede borrar la bala una vez no este en pantalla 
-		return
-		
 	var velocity = Vector2(0, 0)
 	if (not lastCollition):
 		
@@ -42,7 +37,7 @@ func _process(delta):
 			return
 		
 		if (col.get_class() == "CharacterBody2D"):
-			col.health -= damage
+			col.add_damage(damage)
 		queue_free()
 		return
 	

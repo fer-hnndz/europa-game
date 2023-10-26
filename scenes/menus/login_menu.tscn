@@ -17,7 +17,7 @@ offset_left = 499.0
 offset_top = 210.0
 offset_right = 649.0
 offset_bottom = 260.0
-placeholder_text = "Username"
+placeholder_text = "Usuario"
 
 [node name="Password" type="TextEdit" parent="."]
 layout_mode = 0
@@ -25,7 +25,7 @@ offset_left = 499.0
 offset_top = 286.0
 offset_right = 649.0
 offset_bottom = 336.0
-placeholder_text = "Password"
+placeholder_text = "Contrasena"
 
 [node name="Login" type="Button" parent="."]
 layout_mode = 0
@@ -33,7 +33,7 @@ offset_left = 403.0
 offset_top = 381.0
 offset_right = 553.0
 offset_bottom = 412.0
-text = "Create"
+text = "Crear Cuenta"
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 0

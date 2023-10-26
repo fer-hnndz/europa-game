@@ -1,6 +1,6 @@
 extends Control
 
-var username = ""
+var username
 var password
 var created = false
 
@@ -11,32 +11,33 @@ func _ready():
 
 func _on_login_button_down():
 	if !created:
-		username = $Username.text 
-		password = $Password.text.sha256_text()
-		set_login_info(username, password)
-		created = true
-		$Login.text = "Login"
-		$Username.text = ""
-		$Password.text = ""
-		print("Account created")
+		if $Username.text == "" or $Password.text == "":
+			show_message("El nombre de usuario y la contraseña no pueden estar vacíos.")
+		else:
+			username = $Username.text
+			password = $Password.text.sha256_text()
+			set_login_info(username, password)
+			created = true
+			$Login.text = "Login"
+			$Username.text = ""
+			$Password.text = ""
+			show_message("Cuenta creada exitosamente, vuelve a ingresar tus credenciales para iniciar sesion")
 	else:
-		if $Username.text == username:
-			print("Correct username!")
-			
-			if $Password.text.sha256_text() == password:
-				print("Correct password")
-				get_tree().change_scene_to_file("res://scenes/menus//menu.tscn")
-			else:
-				show_message("Login failed! Please check your password.")
-		else: 
-			show_message("Login failed! Please check your username.")
-		
-			
-		
+		if $Username.text == "" or $Password.text == "":
+			show_message("El nombre de usuario y la contraseña no pueden estar vacíos.")
+		else:
+			if $Username.text == username:
+				if $Password.text.sha256_text() == password:
+					get_tree().change_scene_to_file("res://scenes/menus/menu.tscn")
+				else:
+					show_message("Contrasena incorrecta")
+			else: 
+				show_message("Usuario incorrecto")
+
 func set_login_info(user, psswrd):
 	var file = FileAccess.open(LOGIN_INFO, FileAccess.WRITE)
 	file.store_string(user + "\n" + psswrd)
-	
+
 func load_login_info() -> void:
 	if FileAccess.file_exists(LOGIN_INFO):
 		var file = FileAccess.open(LOGIN_INFO, FileAccess.READ)

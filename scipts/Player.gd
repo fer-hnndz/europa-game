@@ -7,7 +7,8 @@ var has_double_jump = true
 var last_bullet = 0
 var bullet_cooldown = 0.055
 var LASER_MAX_LENGTH = 250
-
+var current_health = 35
+var MAX_HEALTH = 35
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 

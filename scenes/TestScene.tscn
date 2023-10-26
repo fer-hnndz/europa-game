@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cm1ku01w54xb3"]
+[gd_scene load_steps=7 format=3 uid="uid://cm1ku01w54xb3"]
 
 [ext_resource type="Script" path="res://scipts/TestSceneController.gd" id="1_b8lxh"]
 [ext_resource type="PackedScene" uid="uid://dj7xs40ybe5hl" path="res://scenes/characters/TestPlatform.tscn" id="1_chmcy"]
 [ext_resource type="PackedScene" uid="uid://dj70kpkttcguv" path="res://scenes/characters/Player.tscn" id="2_4vcyk"]
 [ext_resource type="PackedScene" uid="uid://d2n787c4rn0w2" path="res://scenes/characters/TestEnemy.tscn" id="3_1la1o"]
 [ext_resource type="Texture2D" uid="uid://djb6r1mikxhec" path="res://sprites/europa_bg.png" id="5_cgqab"]
+[ext_resource type="PackedScene" uid="uid://d1trffgcr05ky" path="res://scenes/menus/PlayerUI.tscn" id="6_u4f68"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_b8lxh")
+
+[node name="Player" parent="." instance=ExtResource("2_4vcyk")]
+position = Vector2(285, 497)
 
 [node name="TestPlatform" parent="." instance=ExtResource("1_chmcy")]
 position = Vector2(301, 530)
@@ -17,9 +21,6 @@ position = Vector2(862, 377)
 
 [node name="TestPlatform3" parent="." instance=ExtResource("1_chmcy")]
 position = Vector2(276, 179)
-
-[node name="Player" parent="." instance=ExtResource("2_4vcyk")]
-position = Vector2(285, 497)
 
 [node name="TestEnemy" parent="." instance=ExtResource("3_1la1o")]
 position = Vector2(795, 227)
@@ -32,3 +33,8 @@ z_index = -1
 position = Vector2(749, 330)
 scale = Vector2(1.84, 1.84)
 texture = ExtResource("5_cgqab")
+
+[node name="PlayerUI" parent="." instance=ExtResource("6_u4f68")]
+z_index = 1
+offset_right = 1.0
+offset_bottom = 0.0

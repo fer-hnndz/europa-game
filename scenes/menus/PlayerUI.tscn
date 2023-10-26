@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1trffgcr05ky"]
+
+[ext_resource type="Script" path="res://scipts/PlayerUIController.gd" id="1_pi1tq"]
+
+[node name="PlayerUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1280.0
+offset_bottom = -720.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pi1tq")
+
+[node name="HealthLabel" type="Label" parent="."]
+offset_left = 152.0
+offset_top = 31.0
+offset_right = 174.0
+offset_bottom = 83.0
+text = "HP
+ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HPLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 66.0
+offset_right = 54.0
+offset_bottom = 118.0
+text = "HP
+ "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 31.0
+offset_right = 312.0
+offset_bottom = 58.0
+step = 1.0
+show_percentage = false

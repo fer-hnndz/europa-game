@@ -1,5 +1,4 @@
 extends Node2D
-
 var stages = {
 	"0": {
 		"enemies": [preload("res://scenes/characters/TestEnemy.tscn")

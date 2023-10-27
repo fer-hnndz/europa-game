@@ -15,24 +15,27 @@ script = ExtResource("1_bijon")
 layout_mode = 2
 offset_left = 541.0
 offset_top = 273.5
-offset_right = 611.0
-offset_bottom = 304.5
+offset_right = 661.0
+offset_bottom = 333.5
+theme_override_font_sizes/font_size = 30
 text = "Jugar"
 
 [node name="Options" type="Button" parent="."]
 layout_mode = 2
-offset_left = 541.0
-offset_top = 308.5
-offset_right = 611.0
-offset_bottom = 339.5
+offset_left = 518.0
+offset_top = 343.0
+offset_right = 688.0
+offset_bottom = 403.0
+theme_override_font_sizes/font_size = 30
 text = "Opciones"
 
 [node name="Logout" type="Button" parent="."]
 layout_mode = 2
-offset_left = 541.0
-offset_top = 343.5
-offset_right = 611.0
-offset_bottom = 374.5
+offset_left = 532.0
+offset_top = 416.0
+offset_right = 672.0
+offset_bottom = 476.0
+theme_override_font_sizes/font_size = 30
 text = "Logout"
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

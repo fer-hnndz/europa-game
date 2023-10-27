@@ -15,16 +15,18 @@ script = ExtResource("1_pq1gk")
 layout_mode = 2
 offset_left = 542.5
 offset_top = 291.0
-offset_right = 609.5
-offset_bottom = 322.0
+offset_right = 692.5
+offset_bottom = 351.0
+theme_override_font_sizes/font_size = 30
 text = "Opcion1"
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 2
-offset_left = 542.5
-offset_top = 326.0
-offset_right = 609.5
-offset_bottom = 357.0
+offset_left = 537.0
+offset_top = 367.0
+offset_right = 697.0
+offset_bottom = 427.0
+theme_override_font_sizes/font_size = 30
 text = "Regresar"
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

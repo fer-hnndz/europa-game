@@ -10,15 +10,18 @@ func _ready():
 
 func _on_create_player_button_down():
 	if $Username.text == "" or $Password.text == "":
+		$btnPressedError.play()
 		show_message("El nombre de usuario y la contraseña no pueden estar vacíos.")
 	elif $Username.text in accounts:
+		$btnPressedError.play()
 		show_message("El nombre de usuario ya existe.")
 	else:
 		accounts[$Username.text] = $Password.text.sha256_text()
 		set_login_info()
 		$Username.text = ""
 		$Password.text = ""
-		show_message("Cuenta creada exitosamente, vuelve a ingresar tus credenciales para iniciar sesion")
+		$btnPressedError.play()
+		show_message("Cuenta creada exitosamente, vuelve a login e ingresa tus credenciales para iniciar sesion")
 
 func set_login_info():
 	var file = FileAccess.open(LOGIN_INFO, FileAccess.WRITE)

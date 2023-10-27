@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://f55gnr1xjrgw"]
+[gd_scene load_steps=3 format=3 uid="uid://f55gnr1xjrgw"]
 
 [ext_resource type="Script" path="res://scenes/menus/create_player_menu.gd" id="1_x5xv5"]
+[ext_resource type="AudioStream" uid="uid://da11n77gyim7d" path="res://Sounds/FUI Holographic Button Press-1.wav" id="2_qnmp5"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -46,6 +47,10 @@ offset_right = 912.0
 offset_bottom = 441.0
 theme_override_font_sizes/font_size = 30
 text = "Regresar a Login"
+
+[node name="btnPressedError" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qnmp5")
+volume_db = 15.0
 
 [connection signal="button_down" from="CreatePlayer" to="." method="_on_create_player_button_down"]
 [connection signal="button_down" from="Back" to="." method="_on_back_button_down"]

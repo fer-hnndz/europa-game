@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsp6cve3hn4tn"]
+[gd_scene load_steps=4 format=3 uid="uid://dsp6cve3hn4tn"]
 
 [ext_resource type="Script" path="res://scipts/login_menu.gd" id="1_grfim"]
+[ext_resource type="AudioStream" uid="uid://da11n77gyim7d" path="res://Sounds/FUI Holographic Button Press-1.wav" id="2_g0slo"]
 
 [sub_resource type="SystemFont" id="SystemFont_qg5ip"]
 
@@ -67,6 +68,10 @@ offset_right = 672.0
 offset_bottom = 133.0
 theme_override_font_sizes/font_size = 50
 text = "TBD"
+
+[node name="btnPressedError" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_g0slo")
+volume_db = 15.0
 
 [connection signal="button_down" from="Login" to="." method="_on_login_button_down"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

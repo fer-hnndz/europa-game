@@ -1,7 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsp6cve3hn4tn"]
+[gd_scene load_steps=13 format=3 uid="uid://dsp6cve3hn4tn"]
 
 [ext_resource type="Script" path="res://scipts/login_menu.gd" id="1_grfim"]
+[ext_resource type="Texture2D" uid="uid://i7xfycfskt1o" path="res://sprites/Spaceship.png" id="2_8flnd"]
 [ext_resource type="AudioStream" uid="uid://da11n77gyim7d" path="res://Sounds/FUI Holographic Button Press-1.wav" id="2_g0slo"]
+[ext_resource type="Texture2D" uid="uid://vcilfmv8ri5w" path="res://sprites/Purple_Nebula.png" id="2_hffe1"]
+[ext_resource type="Script" path="res://scipts/Spaceship.gd" id="4_3sgda"]
+[ext_resource type="Texture2D" uid="uid://dktg82aiu7ui7" path="res://sprites/Asteroids#01.png" id="4_wnsxm"]
+[ext_resource type="Script" path="res://scipts/Asteroids.gd" id="6_fsxmi"]
+[ext_resource type="Texture2D" uid="uid://c5tcvdtn048rc" path="res://sprites/asteroid belt.png" id="7_dtme8"]
+[ext_resource type="Script" path="res://scipts/AsteroidBelt.gd" id="8_cd3y0"]
+[ext_resource type="Texture2D" uid="uid://dx3ovng4mdfi2" path="res://sprites/Battlecruisers.png" id="9_r1uyg"]
+[ext_resource type="Script" path="res://scipts/EnemyShip.gd" id="10_4ymlg"]
 
 [sub_resource type="SystemFont" id="SystemFont_qg5ip"]
 
@@ -14,60 +23,100 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_grfim")
 
+[node name="LoginBg" type="Sprite2D" parent="."]
+position = Vector2(647, 413)
+scale = Vector2(1.38086, 1.16602)
+texture = ExtResource("2_hffe1")
+
+[node name="Spaceship" type="Sprite2D" parent="."]
+position = Vector2(0.702535, 112.703)
+rotation = 1.5708
+scale = Vector2(4.30855, 3.93354)
+texture = ExtResource("2_8flnd")
+script = ExtResource("4_3sgda")
+
+[node name="Asteroids" type="Sprite2D" parent="."]
+position = Vector2(1123, 441)
+scale = Vector2(3.24038, 3.22437)
+texture = ExtResource("4_wnsxm")
+script = ExtResource("6_fsxmi")
+
+[node name="AsteroidBelt" type="Sprite2D" parent="."]
+position = Vector2(1247.71, 362.352)
+rotation = 0.876155
+scale = Vector2(2.83528, 3.0622)
+texture = ExtResource("7_dtme8")
+script = ExtResource("8_cd3y0")
+
+[node name="Asteroids3" type="Sprite2D" parent="."]
+position = Vector2(1440.11, 279.68)
+rotation = 0.745256
+scale = Vector2(3.24038, 3.22437)
+texture = ExtResource("4_wnsxm")
+script = ExtResource("6_fsxmi")
+
+[node name="EnemyShip" type="Sprite2D" parent="."]
+position = Vector2(1228, 859)
+rotation = 4.71239
+scale = Vector2(1.17956, 0.881227)
+texture = ExtResource("9_r1uyg")
+script = ExtResource("10_4ymlg")
+
 [node name="Username" type="TextEdit" parent="."]
 layout_mode = 0
-offset_left = 499.0
+offset_left = 514.0
 offset_top = 210.0
-offset_right = 749.0
+offset_right = 764.0
 offset_bottom = 270.0
 theme_override_font_sizes/font_size = 30
 placeholder_text = "Usuario"
 
 [node name="Password" type="TextEdit" parent="."]
 layout_mode = 0
-offset_left = 499.0
+offset_left = 514.0
 offset_top = 286.0
-offset_right = 749.0
+offset_right = 764.0
 offset_bottom = 346.0
 theme_override_font_sizes/font_size = 30
 placeholder_text = "Contrasena"
 
 [node name="Login" type="Button" parent="."]
 layout_mode = 0
-offset_left = 420.0
+offset_left = 435.0
 offset_top = 381.0
-offset_right = 570.0
+offset_right = 585.0
 offset_bottom = 441.0
 theme_override_fonts/font = SubResource("SystemFont_qg5ip")
 theme_override_font_sizes/font_size = 30
 text = "Login"
 
 [node name="Quit" type="Button" parent="."]
-layout_mode = 0
-offset_left = 549.0
+layout_mode = 1
+anchors_preset = -1
+offset_left = 564.0
 offset_top = 455.0
-offset_right = 699.0
+offset_right = 714.0
 offset_bottom = 515.0
 theme_override_font_sizes/font_size = 30
 text = "Cerrar"
 
-[node name="Create" type="Button" parent="."]
+[node name="ChangeMenu" type="Button" parent="."]
 layout_mode = 0
-offset_left = 609.0
+offset_left = 624.0
 offset_top = 380.0
-offset_right = 829.0
+offset_right = 844.0
 offset_bottom = 440.0
 theme_override_font_sizes/font_size = 30
 text = "Crear Cuenta"
 
-[node name="Label" type="Label" parent="."]
+[node name="LblGameName" type="Label" parent="."]
 layout_mode = 0
-offset_left = 571.0
-offset_top = 56.0
-offset_right = 672.0
-offset_bottom = 133.0
+offset_left = 562.0
+offset_top = 52.0
+offset_right = 724.0
+offset_bottom = 129.0
 theme_override_font_sizes/font_size = 50
-text = "TBD"
+text = "LOGIN"
 
 [node name="btnPressedError" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_g0slo")
@@ -75,4 +124,4 @@ volume_db = 15.0
 
 [connection signal="button_down" from="Login" to="." method="_on_login_button_down"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
-[connection signal="button_down" from="Create" to="." method="_on_create_button_down"]
+[connection signal="button_down" from="ChangeMenu" to="." method="_on_change_menu_button_down"]

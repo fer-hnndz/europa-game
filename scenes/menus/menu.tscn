@@ -13,30 +13,39 @@ script = ExtResource("1_bijon")
 
 [node name="Play" type="Button" parent="."]
 layout_mode = 2
-offset_left = 541.0
-offset_top = 273.5
-offset_right = 661.0
-offset_bottom = 333.5
+offset_left = 578.0
+offset_top = 249.0
+offset_right = 698.0
+offset_bottom = 309.0
 theme_override_font_sizes/font_size = 30
 text = "Jugar"
 
 [node name="Options" type="Button" parent="."]
 layout_mode = 2
-offset_left = 518.0
-offset_top = 343.0
-offset_right = 688.0
-offset_bottom = 403.0
+offset_left = 555.0
+offset_top = 318.5
+offset_right = 725.0
+offset_bottom = 378.5
 theme_override_font_sizes/font_size = 30
 text = "Opciones"
 
 [node name="Logout" type="Button" parent="."]
 layout_mode = 2
-offset_left = 532.0
-offset_top = 416.0
-offset_right = 672.0
-offset_bottom = 476.0
+offset_left = 569.0
+offset_top = 391.5
+offset_right = 709.0
+offset_bottom = 451.5
 theme_override_font_sizes/font_size = 30
 text = "Logout"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 64.0
+offset_right = 853.0
+offset_bottom = 159.0
+theme_override_font_sizes/font_size = 50
+text = "MENU PRINCIPAL"
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://f55gnr1xjrgw"]
 
-[ext_resource type="Script" path="res://scenes/menus/create_player_menu.gd" id="1_x5xv5"]
+[ext_resource type="Script" path="res://scipts/create_player_menu.gd" id="1_6nlei"]
 [ext_resource type="AudioStream" uid="uid://da11n77gyim7d" path="res://Sounds/FUI Holographic Button Press-1.wav" id="2_qnmp5"]
 
 [node name="Menu" type="Control"]
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_x5xv5")
+script = ExtResource("1_6nlei")
 
 [node name="Username" type="TextEdit" parent="."]
 layout_mode = 0

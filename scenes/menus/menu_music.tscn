@@ -1,7 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://bvgepypjuxe8n"]
+[gd_scene load_steps=5 format=3 uid="uid://bvgepypjuxe8n"]
 
 [ext_resource type="AudioStream" uid="uid://cawwlb0iicubj" path="res://Sounds/Crash Landing.mp3" id="1_lhc8t"]
+[ext_resource type="Script" path="res://scenes/menus/menu_music.gd" id="2_2qriv"]
+[ext_resource type="AudioStream" uid="uid://dotbdsqe4126s" path="res://Sounds/Race to Mars.mp3" id="2_vm2ej"]
+[ext_resource type="AudioStream" uid="uid://5ocrgujbarwg" path="res://Sounds/DOS-88 - City Stomper.mp3" id="4_vxsg3"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_lhc8t")
 autoplay = true
+script = ExtResource("2_2qriv")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vm2ej")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vxsg3")
+
+[connection signal="finished" from="." to="." method="_on_finished"]
+[connection signal="finished" from="AudioStreamPlayer2" to="." method="_on_audio_stream_player_2_finished"]
+[connection signal="finished" from="AudioStreamPlayer3" to="." method="_on_audio_stream_player_3_finished"]

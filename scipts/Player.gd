@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
+const SPEED = 15000
 const JUMP_VELOCITY = -650.0
 var has_double_jump = true
 var last_bullet = 0
 
-var bullet_cooldown = 0.055
+var bullet_cooldown = 0.1
 var LASER_MAX_LENGTH = 250
 var current_health = 35
 var MAX_HEALTH = 35
@@ -109,7 +109,7 @@ func _physics_process(delta):
 		direction = 1
 		
 	if direction:
-		velocity.x = direction * SPEED;
+		velocity.x = direction * SPEED * delta;
 		#print(velocity.x)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)

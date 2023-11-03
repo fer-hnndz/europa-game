@@ -2,7 +2,7 @@ extends RigidBody2D
 
 
 # Called when the node enters the scene tree for the first time.
-var speed = 150
+var speed = 1.5
 var lastCollition = null
 var objective = null
 var damage = 3
@@ -24,10 +24,13 @@ func _process(delta):
 	var velocity = Vector2(0, 0)
 	if (not lastCollition):
 		
-		var dir_x = objective.x
-		var dir_y = objective.y
-		velocity.x = dir_x * delta
-		velocity.y = dir_y * delta
+		var dir_x
+		var dir_y
+		
+		if (global_position.x - objective.x > 0):
+			dir_x = speed
+		if (global_position.y - objective.y > 0):
+			dir_y = speed
 	else:
 		var col = lastCollition.get_collider()
 		
@@ -42,5 +45,7 @@ func _process(delta):
 		return
 	
 	velocity.normalized()
-	lastCollition = move_and_collide(velocity)
+	print(velocity)
+	#lastCollition = move_and_collide(velocity * delta)
+	lastCollition = move_and_collide(objective * (delta * speed))	
 	pass

@@ -75,24 +75,7 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite2D.play()
 		has_double_jump = true
-
-	if Input.is_action_pressed("shoot"):	
-		if (last_bullet == 0 or Time.get_unix_time_from_system() - last_bullet>= bullet_cooldown):
-			
-			# Guardar tiempo donde se disparo la ultima bala para comprobar si despues puede disparar otra
-			last_bullet = Time.get_unix_time_from_system()
-			
-			# Cargar la bala y ubicarla para disparar
-			var bullet_instance = preload("res://scenes/characters/Bullet.tscn").instantiate()
-			var player_pos = global_position
-			bullet_instance.global_position = Vector2(player_pos.x + 10, player_pos.y)
-			
-			get_parent().add_child(bullet_instance)
-			#bullet_instance.setObjective(player_pos.direction(mouse))
-			bullet_instance.setObjective(player_pos.direction_to(_get_laser_endpoint()) + _get_laser_endpoint())
-			var point_pos = $Line2D.get_point_position(1)
-			
-
+		
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") && has_double_jump:
 		velocity.y = JUMP_VELOCITY ;
@@ -117,15 +100,45 @@ func _physics_process(delta):
 	# Animations
 	if velocity.x > 0:
 		get_node("AnimatedSprite2D").animation = "running"
-		get_node("AnimatedSprite2D").flip_h = false
+		
+		if (not Input.is_action_pressed("shoot")):
+			get_node("AnimatedSprite2D").flip_h = false
+			
 		get_node("AnimatedSprite2D").play()
 		
 	elif velocity.x < 0:
 		get_node("AnimatedSprite2D").animation = "running"
-		get_node("AnimatedSprite2D").flip_h = true
+		
+		if (not Input.is_action_pressed("shoot")):
+			get_node("AnimatedSprite2D").flip_h = true
 		
 	elif velocity.x == 0:
 		#print("idle")
 		get_node("AnimatedSprite2D").animation = "idle"
+		
+	if Input.is_action_pressed("shoot"):	
+		if (last_bullet == 0 or Time.get_unix_time_from_system() - last_bullet>= bullet_cooldown):
+			
+			# Guardar tiempo donde se disparo la ultima bala para comprobar si despues puede disparar otra
+			last_bullet = Time.get_unix_time_from_system()
+			
+			# Cargar la bala y ubicarla para disparar
+			var bullet_instance = preload("res://scenes/characters/Bullet.tscn").instantiate()
+			var player_pos = global_position
+			bullet_instance.global_position = Vector2(player_pos.x + 10, player_pos.y)
+			
+			get_parent().add_child(bullet_instance)
+			#bullet_instance.setObjective(player_pos.direction(mouse))
+			bullet_instance.setObjective(player_pos.direction_to(_get_laser_endpoint()) + _get_laser_endpoint())
+			print(bullet_instance.objective);
+			
+			# Rotar jugador en base la direccion que dispara
+			
+			if (bullet_instance.objective.x < 0):
+				$AnimatedSprite2D.flip_h = true
+			else:
+				$AnimatedSprite2D.flip_h = false
+				
+			var point_pos = $Line2D.get_point_position(1)
 	
 	move_and_slide()

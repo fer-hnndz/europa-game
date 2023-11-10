@@ -5,10 +5,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k0bsv"]
 size = Vector2(64, 60)
 
-[sub_resource type="Gradient" id="Gradient_dmo8o"]
+[sub_resource type="Gradient" id="Gradient_v4o14"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ju7e"]
-gradient = SubResource("Gradient_dmo8o")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_224k3"]
+gradient = SubResource("Gradient_v4o14")
 
 [node name="TestEnemy" type="CharacterBody2D"]
 collision_layer = 4
@@ -21,4 +21,4 @@ position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_k0bsv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_0ju7e")
+texture = SubResource("GradientTexture2D_224k3")

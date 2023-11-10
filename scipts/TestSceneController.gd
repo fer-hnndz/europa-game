@@ -1,19 +1,19 @@
 extends Node2D
 var stages = {
 	"0": {
-		"enemies": [preload("res://scenes/characters/TestEnemy.tscn")
+		"enemies": [preload("res://scenes/characters/Bat.tscn")
 		]
 	},
 	"1": {
-		"enemies": [preload("res://scenes/characters/TestEnemy.tscn"), 
-					preload("res://scenes/characters/TestEnemy.tscn"), 
-					preload("res://scenes/characters/TestEnemy.tscn")
+		"enemies": [preload("res://scenes/characters/Bat.tscn"), 
+					preload("res://scenes/characters/Bat.tscn"), 
+					preload("res://scenes/characters/Bat.tscn")
 		]
 	},
 	"2": {
-		"enemies": [preload("res://scenes/characters/TestEnemy.tscn"), 
-					preload("res://scenes/characters/TestEnemy.tscn"), 
-					preload("res://scenes/characters/TestEnemy.tscn"), 
+		"enemies": [preload("res://scenes/characters/Bat.tscn"), 
+					preload("res://scenes/characters/Bat.tscn"), 
+					preload("res://scenes/characters/Bat.tscn"), 
 					preload("res://scenes/characters/StoneGolem.tscn"), 
 					preload("res://scenes/characters/StoneGolem.tscn"), 
 					preload("res://scenes/characters/StoneGolem.tscn"), 

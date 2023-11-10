@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scipts/TestSceneController.gd" id="1_b8lxh"]
 [ext_resource type="PackedScene" uid="uid://dj7xs40ybe5hl" path="res://scenes/characters/TestPlatform.tscn" id="1_chmcy"]
 [ext_resource type="PackedScene" uid="uid://dj70kpkttcguv" path="res://scenes/characters/Player.tscn" id="2_4vcyk"]
-[ext_resource type="PackedScene" uid="uid://d2n787c4rn0w2" path="res://scenes/characters/TestEnemy.tscn" id="3_1la1o"]
 [ext_resource type="Texture2D" uid="uid://djb6r1mikxhec" path="res://sprites/europa_bg.png" id="5_cgqab"]
+[ext_resource type="PackedScene" uid="uid://cqdgqhqjrikd2" path="res://scenes/characters/Bat.tscn" id="5_lbeoe"]
 [ext_resource type="PackedScene" uid="uid://d1trffgcr05ky" path="res://scenes/menus/PlayerUI.tscn" id="6_u4f68"]
 [ext_resource type="PackedScene" uid="uid://ccileymwip7dk" path="res://scenes/characters/StoneGolem.tscn" id="7_hasi8"]
 
@@ -27,11 +27,11 @@ position = Vector2(862, 377)
 [node name="TestPlatform3" parent="." instance=ExtResource("1_chmcy")]
 position = Vector2(276, 179)
 
-[node name="TestEnemy" parent="." instance=ExtResource("3_1la1o")]
-position = Vector2(795, 227)
-
 [node name="TestPlatform4" parent="." instance=ExtResource("1_chmcy")]
 position = Vector2(749, 530)
+
+[node name="EnemyBat" parent="." instance=ExtResource("5_lbeoe")]
+position = Vector2(700, 200)
 
 [node name="EnemyStoneGolem" parent="." instance=ExtResource("7_hasi8")]
 position = Vector2(524, 440)

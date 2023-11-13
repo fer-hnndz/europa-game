@@ -13,6 +13,8 @@ var MAX_HEALTH = 35
 var spawned = true
 var last_colission
 
+var player_ui_controller
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -20,7 +22,9 @@ func _ready():
 	$AnimatedSprite2D.animation = "spawn"
 	$AnimatedSprite2D.play()
 	#print($Line2D.get_point_count())
-		
+	
+	player_ui_controller = get_parent().get_node("PlayerUI")
+
 func _process_laser(delta):
 	var laser_end = _get_laser_endpoint()
 		
@@ -59,6 +63,7 @@ func _physics_process(delta):
 	
 	if (current_health <= 0):
 		print("Tu ta muelto broder")
+		player_ui_controller.set_highscore_info(player_ui_controller.score)
 		$AnimatedSprite2D.animation = "death"
 		$AnimatedSprite2D.frame = 0
 		$AnimatedSprite2D.play()

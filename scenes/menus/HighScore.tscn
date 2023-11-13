@@ -1,0 +1,50 @@
+[gd_scene load_steps=2 format=3 uid="uid://cs3o727hf6j60"]
+
+[ext_resource type="Script" path="res://scipts/HighScore.gd" id="1_wsk50"]
+
+[node name="HighScore" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wsk50")
+
+[node name="Lbl_highscore" type="Label" parent="."]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 60.0
+offset_right = 796.0
+offset_bottom = 132.0
+theme_override_font_sizes/font_size = 50
+text = "HIGH SCORE"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 711.0
+offset_top = 269.0
+offset_right = 756.0
+offset_bottom = 314.0
+theme_override_font_sizes/font_size = 30
+text = "Pts"
+
+[node name="Lbl_puntos" type="Label" parent="."]
+layout_mode = 0
+offset_left = 587.0
+offset_top = 268.0
+offset_right = 706.0
+offset_bottom = 313.0
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 463.0
+offset_right = 712.0
+offset_bottom = 513.0
+theme_override_font_sizes/font_size = 30
+text = "Regresar"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

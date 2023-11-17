@@ -1,6 +1,7 @@
 extends Control
-
-
+var score = 0
+const HIGH_SCORE_PATH = "user://high_score.txt"
+var highscore = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,3 +14,17 @@ func _process(delta):
 	$HealthBar.max_value = player.MAX_HEALTH
 	$HealthBar.value = player.current_health
 	$HealthLabel.text = str(player.current_health) + "/" + str(player.MAX_HEALTH)
+
+func increase_score(points):
+	score += points
+	$Lbl_Points.text = str(score)
+	
+func set_highscore_info(new_score):
+	var current_high_score = 0
+	if FileAccess.file_exists(HIGH_SCORE_PATH):
+		var file = FileAccess.open(HIGH_SCORE_PATH, FileAccess.READ)
+		current_high_score = file.get_var()
+	
+	if new_score > current_high_score:
+		var file = FileAccess.open(HIGH_SCORE_PATH, FileAccess.WRITE)
+		file.store_var(new_score)

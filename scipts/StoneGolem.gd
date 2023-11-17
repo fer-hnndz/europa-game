@@ -2,7 +2,7 @@ extends CharacterBody2D
 var spawned = false
 var health = 82
 var player
-var SPEED = 2.2
+var SPEED = 0.5
 var last_col
 var damage = 4
 var ATTACK_STALL = 0.5
@@ -88,5 +88,5 @@ func _process(delta):
 			else:
 				print("Choco con attack stall on")
 	
-	last_col = move_and_collide(velocity * SPEED)
+	last_col = move_and_collide((player_pos - global_position) * (SPEED * delta))
 	

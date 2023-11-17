@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3s6xh32f3pxh"]
+
+[ext_resource type="Script" path="res://scipts/StageController.gd" id="1_pgf4u"]
+
+[node name="StageController" type="Node2D"]
+script = ExtResource("1_pgf4u")

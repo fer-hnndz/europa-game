@@ -16,7 +16,10 @@ var last_colission
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+var stageControllerScript = preload("res://scipts/StageController.gd")
+
 func _ready():
+	stageControllerScript.new()
 	$AnimatedSprite2D.animation = "spawn"
 	$AnimatedSprite2D.play()
 	#print($Line2D.get_point_count())

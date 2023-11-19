@@ -11,6 +11,12 @@
 [node name="Player" parent="." instance=ExtResource("3_nye5c")]
 position = Vector2(249, 569)
 
+[node name="PlayerUI" parent="." instance=ExtResource("4_ocv57")]
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+
 [node name="StageController" parent="." instance=ExtResource("5_bbqsl")]
 position = Vector2(416, 435)
 
@@ -42,12 +48,6 @@ scale = Vector2(3.19995, 1)
 position = Vector2(1298, 433)
 rotation = 1.57209
 scale = Vector2(3.19995, 1)
-
-[node name="PlayerUI" parent="." instance=ExtResource("4_ocv57")]
-offset_left = -1.0
-offset_top = 1.0
-offset_right = -1.0
-offset_bottom = 1.0
 
 [node name="Horizontal Platform6" parent="." instance=ExtResource("1_i5wed")]
 position = Vector2(190, 544)

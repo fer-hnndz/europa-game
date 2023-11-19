@@ -14,9 +14,10 @@ var MAX_HEALTH = 35
 var spawned = true
 var last_colission
 var punished = false
+var isStunned = false
 
 # La velocidad minima que tiene que tener para que el jugador sea penalizado
-var punish_bias = 30
+var punish_bias = 200
 var punish_end = 0.09
 
 var lastReceivedAttack = 0
@@ -30,9 +31,46 @@ func _ready():
 	stageControllerScript.new()
 	$AnimatedSprite2D.animation = "spawn"
 	$AnimatedSprite2D.play()
-	#print($Line2D.get_point_count())
-	
 	player_ui_controller = get_parent().get_node("PlayerUI")
+	
+func _physics_process(delta):	
+	# Detectar si la animacion de spawn ha terminado
+	if ($AnimatedSprite2D.frame == 4 and spawned == false and $AnimatedSprite2D.animation != "death"):
+		spawned = true
+		$AnimatedSprite2D.animation = "idle"
+		$AnimatedSprite2D.play()
+		print("Ya se puede mover")
+		print("Ya se puede mover")
+		print("Ya se puede mover")
+	
+	# Si la animacion de muerte termino, mostrar pantalla de muerte
+	if ($AnimatedSprite2D.animation == "death" and $AnimatedSprite2D.frame ==  4):
+		#get_parent().get_node("PlayerUI").queue_free()
+		var death_screen = load("res://scenes/menus/DeathScreen.tscn").instantiate()
+		get_parent().add_child(death_screen)
+		
+	if (spawned == false):
+		return
+	
+	if (current_health <= 0):
+		print("Tu ta muelto broder")
+		player_ui_controller.set_highscore_info(player_ui_controller.score)
+		$AnimatedSprite2D.animation = "death"
+		$AnimatedSprite2D.frame = 0
+		$AnimatedSprite2D.play()
+		spawned = false
+		return
+			
+	
+	_process_laser(delta)
+	
+	# Actualizar si deberia de estar punished
+	if ( (velocity.x > 0 and velocity.x < punish_end) or (velocity.x < 0 and velocity.x > -punish_end) and punished):
+		punished = false
+		$AnimatedSprite2D.animation = "running"
+		
+	process_movement(delta)
+	process_playerFire(delta)
 
 func deal_damage(damage: int, origin: Vector2):
 	current_health -= damage;
@@ -70,59 +108,23 @@ func _get_laser_endpoint() -> Vector2:
 	var laser_y = (LASER_MAX_LENGTH * mouse_pos.y) / line_length
 	return Vector2(laser_x, laser_y)
 		
-func _physics_process(delta):
+func process_movement(delta):
+	var destination = Vector2(0, 0)
 	
-	if (Input.is_key_label_pressed(KEY_F)):
-		print(velocity.x)
-		print(velocity.x)
-		print(velocity.x)
-		return
-		
-	# Detectar si la animacion de spawn ha terminado
-	if ($AnimatedSprite2D.frame == 4 and spawned == false and $AnimatedSprite2D.animation != "death"):
-		spawned = true
-		$AnimatedSprite2D.animation = "idle"
-		$AnimatedSprite2D.play()
-		print("Ya se puede mover")
-		print("Ya se puede mover")
-		print("Ya se puede mover")
-	
-	# Si la animacion de muerte termino, mostrar pantalla de muerte
-	if ($AnimatedSprite2D.animation == "death" and $AnimatedSprite2D.frame ==  4):
-		#get_parent().get_node("PlayerUI").queue_free()
-		var death_screen = load("res://scenes/menus/DeathScreen.tscn").instantiate()
-		get_parent().add_child(death_screen)
-		
-	if (spawned == false):
-		return
-	
-	if (current_health <= 0):
-		print("Tu ta muelto broder")
-		player_ui_controller.set_highscore_info(player_ui_controller.score)
-		$AnimatedSprite2D.animation = "death"
-		$AnimatedSprite2D.frame = 0
-		$AnimatedSprite2D.play()
-		spawned = false
-		return
-			
-	
-	_process_laser(delta)
-
 	# Add the gravity.
 	if not is_on_floor():
 		$AnimatedSprite2D.stop()
 		$AnimatedSprite2D.set_frame(0)
-		velocity.y += gravity * delta
+		destination.y += velocity.y + gravity * delta
 	else:
 		$AnimatedSprite2D.play()
 		has_double_jump = true
-		
-		
-	var isStunned = Time.get_unix_time_from_system() - lastReceivedAttack <= 0.09
+			
+	isStunned = Time.get_unix_time_from_system() - lastReceivedAttack <= 0.09
 		
 	# Handle Jump.
 	if Input.is_action_just_pressed("ui_accept") && has_double_jump && !isStunned:
-		velocity.y = JUMP_VELOCITY ;
+		destination.y = JUMP_VELOCITY;
 		if not is_on_floor():
 			has_double_jump = false
 		
@@ -144,44 +146,44 @@ func _physics_process(delta):
 		velocity.x = 0;
 		punished = false
 		
+	
 	if direction && !isStunned:
 		
 		# No ha terminado de acelerar completamente, aplicar punish anim.
 		
-		var shouldPunish =(direction == -1 and velocity.x > punish_bias) or (direction == 1 and velocity.x < -punish_bias)
+		var shouldPunish = (direction == -1 and velocity.x > punish_bias) or (direction == 1 and velocity.x < -punish_bias)
 		if ( (shouldPunish or punished) and is_on_floor()):
 			if ($AnimatedSprite2D.animation != "brake"):
 				$AnimatedSprite2D.animation = "brake"
 				$AnimatedSprite2D.frame = 0;
 				
-				print("punish")
+				print("[Player.gd] Player is now punished")
 				punished = true
 				$AnimatedSprite2D.play();
 				$AnimatedSprite2D.flip_h = !$AnimatedSprite2D.flip_h
 				
 			# Desacelerar mas rapido por el "frenado"	
-			print("D punish")
 			velocity.x = lerp(velocity.x, 0.0, 0.35)
 		else:
-			print("M normal")
-			velocity.x = direction * SPEED * delta;
+			destination.x = direction * SPEED * delta;
 	elif direction == 0:
 		# Si no hay direccion, desacelerar.
 		# Desacelerar mas rapido si esta en punished.
 		
 		if (punished):
-			print("D punish")
 			velocity.x = lerp(velocity.x, 0.0, 0.35)
 		else:
-			print("D normal")
 			velocity.x = lerp(velocity.x, 0.0, 0.15)
+			
+	velocity.y = destination.y
+	velocity.x = lerp(velocity.x, destination.x, 0.1)
 	
-	# Actualizar si deberia de estar punished
-	if ( (velocity.x > 0 and velocity.x < punish_end) or (velocity.x < 0 and velocity.x > -punish_end) and punished):
-		punished = false
-		print("NOT PUNISHED ANYMORE")
-		$AnimatedSprite2D.animation = "running"
+	# Antes de mover, animar
+	process_anims(direction)
 	
+	move_and_slide()
+			
+func process_anims(direction: int):
 	# Animations
 	if direction > 0 and not punished:
 		get_node("AnimatedSprite2D").animation = "running"
@@ -201,6 +203,7 @@ func _physics_process(delta):
 		#print("idle")
 		get_node("AnimatedSprite2D").animation = "idle"
 		
+func process_playerFire(delta):
 	if Input.is_action_pressed("shoot") and !isStunned and not punished:	
 		if (last_bullet == 0 or Time.get_unix_time_from_system() - last_bullet>= bullet_cooldown):
 			
@@ -213,9 +216,8 @@ func _physics_process(delta):
 			bullet_instance.global_position = Vector2(player_pos.x + 10, player_pos.y)
 			
 			get_parent().add_child(bullet_instance)
-			#bullet_instance.setObjective(player_pos.direction(mouse))
 			bullet_instance.setObjective(player_pos.direction_to(_get_laser_endpoint()) + _get_laser_endpoint())
-			print(bullet_instance.objective);
+
 			
 			# Rotar jugador en base la direccion que dispara
 			
@@ -225,15 +227,10 @@ func _physics_process(delta):
 				$AnimatedSprite2D.flip_h = false
 				
 			var point_pos = $Line2D.get_point_position(1)
-	
-	print(velocity.x)
-	move_and_slide()
-
-
+			
 # Funcion ejecutada cuando un cuerpo entra en contacto con el jugador
 func _on_hitbox_body_entered(body):
 #	if not (body is CharacterBody2D):
 #		return
-	
 	print(body)
 

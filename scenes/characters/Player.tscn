@@ -184,7 +184,7 @@ offsets = PackedFloat32Array(0, 0.020979)
 gradient = SubResource("Gradient_yl1yf")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0eec0"]
-size = Vector2(15.2941, 24.1176)
+size = Vector2(15.2941, 23.5294)
 
 [node name="Player" type="CharacterBody2D"]
 material = SubResource("CanvasItemMaterial_vwtsi")
@@ -201,7 +201,8 @@ animation = &"brake"
 frame_progress = 0.687137
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.94118, -1.47059)
+position = Vector2(2.94119, -1.47059)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_06m1h")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
@@ -216,7 +217,8 @@ joint_mode = 2
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(2.94118, -1.47059)
+position = Vector2(2.94118, -1.76471)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_0eec0")
 
-[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

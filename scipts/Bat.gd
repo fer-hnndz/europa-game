@@ -58,7 +58,6 @@ func _process(delta):
 		$AnimatedSprite2D.play()
 		
 	if (health <= 0):
-		print("Se murio murcielago")
 		player_ui_controller.increase_score(add_points)
 		queue_free()
 	
@@ -70,28 +69,17 @@ func _process(delta):
 
 	# No mover mientras no se haya completado el stall de
 	if (Time.get_unix_time_from_system() <= self.last_attack + ATTACK_STALL):
-		print("NO HA PASADO ATTACK STALL")
 		velocity = Vector2(0, 0)
 	
 	
 
-	if (last_col):
-		var col = last_col.get_collider()	
-		if (col != null):
-			if (col.name == "Player" and velocity.x != 0 and velocity.y != 0):
-				col.current_health -= damage_caused
-				
-				var vel = Vector2(0, 0)
-				vel.x = (col.SPEED / 2) * (velocity.x / abs(velocity.x) )
-				vel.y = (col.gravity / 2) * (velocity.y / abs(velocity.y))  
-				
-				col.velocity = vel
-				col.move_and_slide()
-				
-				velocity = Vector2(0, 0)
-				self.last_attack = Time.get_unix_time_from_system()
-			else:
-				print("Choco con attack stall on")
+#	if (last_col):
+#		var col = last_col.get_collider()	
+#		if (col != null):
+#			if (col.name == "Player" and velocity.x != 0 and velocity.y != 0):
+#				col.deal_damage(damage_caused, global_position)
+#
+#				self.last_attack = Time.get_unix_time_from_system()
 	
-	last_col = move_and_collide(velocity * SPEED)
+	move_and_collide(velocity * SPEED)
 	

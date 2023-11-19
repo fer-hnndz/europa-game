@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cqdgqhqjrikd2"]
+[gd_scene load_steps=13 format=3 uid="uid://cqdgqhqjrikd2"]
 
 [ext_resource type="Script" path="res://scipts/Bat.gd" id="1_rudfe"]
 [ext_resource type="Texture2D" uid="uid://b42jgho10saja" path="res://sprites/Bat_Sprite_Sheet.png" id="2_u6i7d"]
@@ -88,6 +88,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mg1pw"]
 size = Vector2(50, 28.2353)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bq6p"]
+size = Vector2(51.7647, 29.4118)
+
 [node name="EnemyBat" type="CharacterBody2D"]
 scale = Vector2(1.7, 1.7)
 collision_layer = 4
@@ -104,3 +107,10 @@ animation = &"damage"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.76471, -4.11765)
 shape = SubResource("RectangleShape2D_mg1pw")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(7.05882, -4.11765)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_7bq6p")

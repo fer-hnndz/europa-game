@@ -35,7 +35,6 @@ func _process(delta):
 		var col = lastCollition.get_collider()
 		
 		if (col == null):
-			print("La ultima colision es null???")
 			queue_free()			
 			return
 		
@@ -45,7 +44,5 @@ func _process(delta):
 		return
 	
 	velocity.normalized()
-	print(velocity)
-	#lastCollition = move_and_collide(velocity * delta)
-	lastCollition = move_and_collide(objective * (delta * speed))	
+	lastCollition = move_and_collide(objective * (delta * speed))
 	pass

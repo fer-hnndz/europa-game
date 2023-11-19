@@ -84,7 +84,7 @@ func deal_damage(damage: int, origin: Vector2):
 	
 	velocity = knockback
 	move_and_slide()
-	print("aplicado")
+	print("[Player.gd - deal_damag] aplicado")
 	lastReceivedAttack = Time.get_unix_time_from_system()
 #
 #=================
@@ -229,8 +229,8 @@ func process_playerFire(delta):
 			var point_pos = $Line2D.get_point_position(1)
 			
 # Funcion ejecutada cuando un cuerpo entra en contacto con el jugador
-func _on_hitbox_body_entered(body):
-#	if not (body is CharacterBody2D):
-#		return
-	print(body)
 
+
+
+func _on_hitbox_area_entered(area):
+	deal_damage(area.get_parent().damage_caused, area.get_parent().global_position)

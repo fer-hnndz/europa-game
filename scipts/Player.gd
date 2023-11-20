@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 15000
+var SPEED = 0
 const JUMP_VELOCITY = -650.0
 var has_double_jump = true
 var last_bullet = 0
@@ -15,6 +15,15 @@ var spawned = true
 var last_colission
 var punished = false
 var isStunned = false
+var death_screen_visible = false
+const NORMAL_SPEED = 15000
+const DASH_SPEED = NORMAL_SPEED * 4
+
+var dash_cooldown = 5
+var dash_available = 0
+var dash_end = 0
+
+@onready var dash_timer = Timer.new()
 
 # La velocidad minima que tiene que tener para que el jugador sea penalizado
 var punish_bias = 200
@@ -28,6 +37,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var stageControllerScript = preload("res://scipts/StageController.gd")
 
 func _ready():
+	dash_timer.one_shot = true
+	
 	stageControllerScript.new()
 	$AnimatedSprite2D.animation = "spawn"
 	$AnimatedSprite2D.play()
@@ -44,10 +55,11 @@ func _physics_process(delta):
 		print("Ya se puede mover")
 	
 	# Si la animacion de muerte termino, mostrar pantalla de muerte
-	if ($AnimatedSprite2D.animation == "death" and $AnimatedSprite2D.frame ==  4):
+	if ($AnimatedSprite2D.animation == "death" and $AnimatedSprite2D.frame ==  4) and not death_screen_visible:
 		#get_parent().get_node("PlayerUI").queue_free()
 		var death_screen = load("res://scenes/menus/DeathScreen.tscn").instantiate()
 		get_parent().add_child(death_screen)
+		death_screen_visible = true
 		
 	if (spawned == false):
 		return
@@ -110,6 +122,20 @@ func _get_laser_endpoint() -> Vector2:
 		
 func process_movement(delta):
 	var destination = Vector2(0, 0)
+	
+	var keepDashing = Time.get_unix_time_from_system() < dash_end
+	var canDash = Time.get_unix_time_from_system() >= dash_available
+	
+	if Input.is_action_just_pressed("dash") and not keepDashing and canDash:
+		print("pressed dash")
+		dash_end = Time.get_unix_time_from_system() + 0.3
+		dash_available = Time.get_unix_time_from_system() + 5
+		
+		
+	print(keepDashing)
+	SPEED = DASH_SPEED if keepDashing else NORMAL_SPEED
+	
+	
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -177,7 +203,6 @@ func process_movement(delta):
 			
 	velocity.y = destination.y
 	velocity.x = lerp(velocity.x, destination.x, 0.1)
-	
 	# Antes de mover, animar
 	process_anims(direction)
 	

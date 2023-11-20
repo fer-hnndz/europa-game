@@ -23,6 +23,7 @@ var dash_cooldown = 5
 var dash_available = 0
 var dash_end = 0
 
+var heavy_fire_available = 0
 @onready var dash_timer = Timer.new()
 
 # La velocidad minima que tiene que tener para que el jugador sea penalizado
@@ -243,19 +244,33 @@ func process_playerFire(delta):
 			get_parent().add_child(bullet_instance)
 			bullet_instance.setObjective(player_pos.direction_to(_get_laser_endpoint()) + _get_laser_endpoint())
 
-			
 			# Rotar jugador en base la direccion que dispara
-			
 			if (bullet_instance.objective.x < 0):
 				$AnimatedSprite2D.flip_h = true
 			else:
 				$AnimatedSprite2D.flip_h = false
 				
-			var point_pos = $Line2D.get_point_position(1)
-			
+	var canHeavyFire = Time.get_unix_time_from_system() >= heavy_fire_available
+	if Input.is_action_just_pressed("heavy_fire") and canHeavyFire:
+		heavy_fire_available = Time.get_unix_time_from_system() + 12
+		
+		# Cargar la bala y ubicarla para disparar
+		var bullet_instance = preload("res://scenes/characters/HeavyBullet.tscn").instantiate()
+		var player_pos = global_position
+		bullet_instance.global_position = Vector2(player_pos.x + 10, player_pos.y)
+		
+		get_parent().add_child(bullet_instance)
+		bullet_instance.setObjective(player_pos.direction_to(_get_laser_endpoint()) + _get_laser_endpoint())
+
+		# Rotar jugador en base la direccion que dispara
+		if (bullet_instance.objective.x < 0):
+			$AnimatedSprite2D.flip_h = true
+		else:
+			$AnimatedSprite2D.flip_h = false
+		
+		
+
+
 # Funcion ejecutada cuando un cuerpo entra en contacto con el jugador
-
-
-
 func _on_hitbox_area_entered(area):
 	deal_damage(area.get_parent().damage_caused, area.get_parent().global_position)

@@ -1,11 +1,10 @@
 extends RigidBody2D
 
 
-
-var speed = 4
+var speed = 2
 var lastCollition = null
 var objective = null
-var damage = 3
+var damage = 35
 var stage = -1
 
 # Called when the node enters the scene tree for the first time.

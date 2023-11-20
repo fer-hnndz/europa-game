@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://re2pgsgnbg50"]
+
+[ext_resource type="Script" path="res://scenes/characters/HeavyBullet.gd" id="1_gqavc"]
+[ext_resource type="SpriteFrames" uid="uid://cwhk8lf7mmi54" path="res://sprites/HeavyBulletAnim.tres" id="1_gsut3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bmlja"]
+radius = 4.3578
+
+[node name="HeavyBullet" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 12
+script = ExtResource("1_gqavc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(4.36, 4.36)
+shape = SubResource("CircleShape2D_bmlja")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6.28, 6.28)
+sprite_frames = ExtResource("1_gsut3")

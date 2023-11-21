@@ -32,6 +32,10 @@ var punish_end = 0.09
 
 var lastReceivedAttack = 0
 var player_ui_controller
+var heavy_bullet_ready
+var heavy_bullet_reloading
+var dash_ready
+var dash_reloading
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -44,6 +48,10 @@ func _ready():
 	$AnimatedSprite2D.animation = "spawn"
 	$AnimatedSprite2D.play()
 	player_ui_controller = get_parent().get_node("PlayerUI")
+	heavy_bullet_ready = player_ui_controller.get_node("HeavyBulletReady")
+	heavy_bullet_reloading = player_ui_controller.get_node("HeavyBulletReloading")
+	dash_ready = player_ui_controller.get_node("DashReady")
+	dash_reloading = player_ui_controller.get_node("DashReloading")
 	
 func _physics_process(delta):	
 	# Detectar si la animacion de spawn ha terminado
@@ -127,10 +135,17 @@ func process_movement(delta):
 	var keepDashing = Time.get_unix_time_from_system() < dash_end
 	var canDash = Time.get_unix_time_from_system() >= dash_available
 	
+	if canDash:
+		dash_ready.visible = true
+		dash_reloading.visible = false
+	
 	if Input.is_action_just_pressed("dash") and not keepDashing and canDash:
 		print("pressed dash")
 		dash_end = Time.get_unix_time_from_system() + 0.3
 		dash_available = Time.get_unix_time_from_system() + 5
+		
+		dash_ready.visible = false
+		dash_reloading.visible = true
 		
 		
 	print(keepDashing)
@@ -251,6 +266,11 @@ func process_playerFire(delta):
 				$AnimatedSprite2D.flip_h = false
 				
 	var canHeavyFire = Time.get_unix_time_from_system() >= heavy_fire_available
+	
+	if canHeavyFire:
+		heavy_bullet_ready.visible = true
+		heavy_bullet_reloading.visible = false
+	
 	if Input.is_action_just_pressed("heavy_fire") and canHeavyFire:
 		heavy_fire_available = Time.get_unix_time_from_system() + 12
 		
@@ -267,9 +287,10 @@ func process_playerFire(delta):
 			$AnimatedSprite2D.flip_h = true
 		else:
 			$AnimatedSprite2D.flip_h = false
+			
+		heavy_bullet_ready.visible = false
+		heavy_bullet_reloading.visible = true
 		
-		
-
 
 # Funcion ejecutada cuando un cuerpo entra en contacto con el jugador
 func _on_hitbox_area_entered(area):

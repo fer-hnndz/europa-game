@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1trffgcr05ky"]
+[gd_scene load_steps=4 format=3 uid="uid://d1trffgcr05ky"]
 
 [ext_resource type="Script" path="res://scipts/PlayerUIController.gd" id="1_pi1tq"]
+[ext_resource type="Texture2D" uid="uid://c7qye8lba2n53" path="res://sprites/running.png" id="2_nbwpr"]
+[ext_resource type="Texture2D" uid="uid://dewa5awr3al8w" path="res://sprites/heavyBulletReady.png" id="4_jvto1"]
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -61,3 +63,26 @@ offset_right = 1224.0
 offset_bottom = 66.0
 theme_override_font_sizes/font_size = 22
 text = "XP"
+
+[node name="DashReloading" type="Sprite2D" parent="."]
+modulate = Color(1, 0.164706, 0.196078, 0.537255)
+position = Vector2(980, 50)
+scale = Vector2(2, 2)
+texture = ExtResource("2_nbwpr")
+
+[node name="DashReady" type="Sprite2D" parent="."]
+modulate = Color(0.968627, 1, 1, 1)
+position = Vector2(980, 50)
+scale = Vector2(2, 2)
+texture = ExtResource("2_nbwpr")
+
+[node name="HeavyBulletReloading" type="Sprite2D" parent="."]
+modulate = Color(0.999799, 0.256112, 0.236864, 1)
+position = Vector2(1050, 50)
+scale = Vector2(6, 6)
+texture = ExtResource("4_jvto1")
+
+[node name="HeavyBulletReady" type="Sprite2D" parent="."]
+position = Vector2(1050, 50)
+scale = Vector2(6, 6)
+texture = ExtResource("4_jvto1")

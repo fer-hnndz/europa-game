@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Europa"
-run/main_scene="res://scenes/TestScene.tscn"
+run/main_scene="res://scenes/menus/login_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 

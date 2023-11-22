@@ -11,7 +11,7 @@ var stages = {
 		]
 	},
 	"2": {
-		"enemies": [preload("res://scenes/characters/Bat.tscn"), 
+		"enemies": [preload("res://scenes/characters/Astronaut.tscn"), 
 					preload("res://scenes/characters/Bat.tscn"), 
 					preload("res://scenes/characters/Bat.tscn"), 
 					preload("res://scenes/characters/StoneGolem.tscn"), 
@@ -53,8 +53,8 @@ func _process(delta):
 			var r = RandomNumberGenerator.new()
 			var player_pos = $Player.global_position
 
-			var xd = r.randi_range(150, 350)
-			var yd = r.randi_range(100, 250)
+			var xd = r.randi_range(450, 750)
+			var yd = r.randi_range(300, 550)
 			var mod = 0
 			
 			while (mod == 0):

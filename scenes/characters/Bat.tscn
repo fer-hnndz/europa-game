@@ -112,5 +112,4 @@ shape = SubResource("RectangleShape2D_mg1pw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(7.05882, -4.11765)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7bq6p")

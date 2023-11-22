@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cm1ku01w54xb3"]
+[gd_scene load_steps=9 format=3 uid="uid://cm1ku01w54xb3"]
 
 [ext_resource type="Script" path="res://scipts/TestSceneController.gd" id="1_b8lxh"]
 [ext_resource type="PackedScene" uid="uid://dj7xs40ybe5hl" path="res://scenes/characters/TestPlatform.tscn" id="1_chmcy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cqdgqhqjrikd2" path="res://scenes/characters/Bat.tscn" id="5_lbeoe"]
 [ext_resource type="PackedScene" uid="uid://d1trffgcr05ky" path="res://scenes/menus/PlayerUI.tscn" id="6_u4f68"]
 [ext_resource type="PackedScene" uid="uid://ccileymwip7dk" path="res://scenes/characters/StoneGolem.tscn" id="7_hasi8"]
+[ext_resource type="PackedScene" uid="uid://6k82fl8oapmi" path="res://scenes/characters/Astronaut.tscn" id="7_xkfnd"]
 
 [node name="TestScene" type="Node2D"]
 script = ExtResource("1_b8lxh")
@@ -35,6 +36,9 @@ position = Vector2(700, 200)
 
 [node name="EnemyStoneGolem" parent="." instance=ExtResource("7_hasi8")]
 position = Vector2(524, 440)
+
+[node name="EnemyAstronaut" parent="." instance=ExtResource("7_xkfnd")]
+position = Vector2(1100, 90)
 
 [node name="wall_left" parent="." instance=ExtResource("1_chmcy")]
 position = Vector2(-28, 377)

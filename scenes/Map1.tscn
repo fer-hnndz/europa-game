@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcsfnxprvs78x"]
+[gd_scene load_steps=8 format=3 uid="uid://dcsfnxprvs78x"]
 
 [ext_resource type="PackedScene" uid="uid://bxojvg5s51pca" path="res://scenes/characters/horizontal_platform.tscn" id="1_i5wed"]
 [ext_resource type="PackedScene" uid="uid://dj7xs40ybe5hl" path="res://scenes/characters/TestPlatform.tscn" id="2_ivv8w"]
 [ext_resource type="PackedScene" uid="uid://dj70kpkttcguv" path="res://scenes/characters/Player.tscn" id="3_nye5c"]
 [ext_resource type="PackedScene" uid="uid://d1trffgcr05ky" path="res://scenes/menus/PlayerUI.tscn" id="4_ocv57"]
 [ext_resource type="PackedScene" uid="uid://3s6xh32f3pxh" path="res://scenes/stage_controller.tscn" id="5_bbqsl"]
+[ext_resource type="PackedScene" uid="uid://ddlrvgsdgjlix" path="res://scenes/characters/WorldBlock.tscn" id="6_kanb0"]
+[ext_resource type="PackedScene" uid="uid://07cigku5in43" path="res://scenes/characters/Spike.tscn" id="7_1vr0l"]
 
 [node name="Map1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("3_nye5c")]
-position = Vector2(249, 569)
+position = Vector2(264, 474)
 
 [node name="PlayerUI" parent="." instance=ExtResource("4_ocv57")]
 offset_left = -1.0
@@ -21,19 +23,22 @@ offset_bottom = 1.0
 position = Vector2(416, 435)
 
 [node name="Horizontal Platform" parent="." instance=ExtResource("1_i5wed")]
-position = Vector2(155, 699)
+position = Vector2(60, 521)
 
 [node name="Horizontal Platform2" parent="." instance=ExtResource("1_i5wed")]
-position = Vector2(466, 699)
+position = Vector2(242, 521)
+
+[node name="Horizontal Platform6" parent="." instance=ExtResource("1_i5wed")]
+position = Vector2(1036, 525)
+
+[node name="Horizontal Platform7" parent="." instance=ExtResource("1_i5wed")]
+position = Vector2(1223, 525)
 
 [node name="Horizontal Platform3" parent="." instance=ExtResource("1_i5wed")]
-position = Vector2(777, 699)
+position = Vector2(453, 704)
 
 [node name="Horizontal Platform4" parent="." instance=ExtResource("1_i5wed")]
-position = Vector2(1091, 699)
-
-[node name="Horizontal Platform5" parent="." instance=ExtResource("1_i5wed")]
-position = Vector2(1403, 700)
+position = Vector2(764, 704)
 
 [node name="TestPlatform" parent="." instance=ExtResource("2_ivv8w")]
 position = Vector2(630, -64)
@@ -49,6 +54,70 @@ position = Vector2(1298, 433)
 rotation = 1.57209
 scale = Vector2(3.19995, 1)
 
-[node name="Horizontal Platform6" parent="." instance=ExtResource("1_i5wed")]
-position = Vector2(190, 544)
-scale = Vector2(0.685097, 0.685097)
+[node name="WorldBlock" parent="." instance=ExtResource("6_kanb0")]
+position = Vector2(147, 777)
+scale = Vector2(2.67948, 2.67948)
+
+[node name="WorldBlock2" parent="." instance=ExtResource("6_kanb0")]
+position = Vector2(1139, 781)
+scale = Vector2(2.67948, 2.67948)
+
+[node name="Horizontal Platform5" parent="." instance=ExtResource("1_i5wed")]
+position = Vector2(607, 211)
+scale = Vector2(0.6, 0.6)
+
+[node name="Horizontal Platform9" parent="." instance=ExtResource("1_i5wed")]
+position = Vector2(907, 345)
+scale = Vector2(0.629855, 0.658306)
+
+[node name="Horizontal Platform8" parent="." instance=ExtResource("1_i5wed")]
+position = Vector2(309, 346)
+scale = Vector2(0.6, 0.6)
+
+[node name="Spike" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(421, 672)
+
+[node name="Spike2" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(453, 672)
+
+[node name="Spike3" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(485, 672)
+
+[node name="Spike4" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(516, 672)
+
+[node name="Spike5" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(548, 672)
+
+[node name="Spike6" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(580, 672)
+
+[node name="Spike7" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(612, 672)
+
+[node name="Spike8" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(644, 672)
+
+[node name="Spike9" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(676, 672)
+
+[node name="Spike10" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(708, 672)
+
+[node name="Spike11" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(740, 672)
+
+[node name="Spike12" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(772, 672)
+
+[node name="Spike13" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(804, 672)
+
+[node name="Spike14" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(804, 672)
+
+[node name="Spike15" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(836, 672)
+
+[node name="Spike16" parent="." instance=ExtResource("7_1vr0l")]
+position = Vector2(868, 672)

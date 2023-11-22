@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddlrvgsdgjlix"]
+
+[ext_resource type="Texture2D" uid="uid://dr4txagrgxok3" path="res://sprites/Space Base.png" id="1_hl80w"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tivyj"]
+atlas = ExtResource("1_hl80w")
+region = Rect2(0, 17, 192, 176)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tfqre"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tivyj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cg2f5"]
+size = Vector2(191, 176)
+
+[node name="WorldBlock" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 9
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tfqre")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_cg2f5")

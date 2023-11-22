@@ -202,7 +202,6 @@ frame_progress = 0.687137
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.94119, -1.47059)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_06m1h")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
@@ -218,7 +217,6 @@ joint_mode = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(2.94118, -1.76471)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_0eec0")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

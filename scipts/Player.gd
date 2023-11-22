@@ -273,4 +273,5 @@ func process_playerFire(delta):
 
 # Funcion ejecutada cuando un cuerpo entra en contacto con el jugador
 func _on_hitbox_area_entered(area):
+	print(area.get_parent().name)
 	deal_damage(area.get_parent().damage_caused, area.get_parent().global_position)

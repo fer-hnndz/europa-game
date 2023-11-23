@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://1tbmc5hii8vp"]
+
+[ext_resource type="PackedScene" uid="uid://d1trffgcr05ky" path="res://scenes/menus/PlayerUI.tscn" id="1_cbuym"]
+[ext_resource type="PackedScene" uid="uid://bxojvg5s51pca" path="res://scenes/characters/horizontal_platform.tscn" id="1_ymeco"]
+[ext_resource type="PackedScene" uid="uid://dj70kpkttcguv" path="res://scenes/characters/Player.tscn" id="2_v8tq1"]
+
+[node name="Map2" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_v8tq1")]
+position = Vector2(617, 349)
+
+[node name="PlayerUI" parent="." instance=ExtResource("1_cbuym")]
+offset_left = 19.0
+offset_top = 9.0
+offset_right = 19.0
+offset_bottom = 9.0
+
+[node name="Horizontal Platform" parent="." instance=ExtResource("1_ymeco")]
+position = Vector2(748, 837)
+scale = Vector2(-7.11206, -7.11206)
+
+[node name="Horizontal Platform2" parent="." instance=ExtResource("1_ymeco")]
+position = Vector2(615, 398)

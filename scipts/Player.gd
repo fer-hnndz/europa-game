@@ -92,6 +92,9 @@ func _physics_process(delta):
 		
 	process_movement(delta)
 	process_playerFire(delta)
+	
+	#if Input.is_key_pressed(KEY_L):
+		
 
 func deal_damage(damage: int, origin: Vector2):
 	current_health -= damage;

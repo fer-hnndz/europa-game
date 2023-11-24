@@ -45,13 +45,19 @@ func _ready():
 	dash_timer.one_shot = true
 	
 	stageControllerScript.new()
+	spawned = false
 	$AnimatedSprite2D.animation = "spawn"
 	$AnimatedSprite2D.play()
+	
+	
 	player_ui_controller = get_parent().get_node("PlayerUI")
 	heavy_bullet_ready = player_ui_controller.get_node("HeavyBulletReady")
 	heavy_bullet_reloading = player_ui_controller.get_node("HeavyBulletReloading")
 	dash_ready = player_ui_controller.get_node("DashReady")
 	dash_reloading = player_ui_controller.get_node("DashReloading")
+
+func _despawn():
+	spawned = false
 	
 func _physics_process(delta):	
 	# Detectar si la animacion de spawn ha terminado

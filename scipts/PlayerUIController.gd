@@ -13,7 +13,17 @@ func _process(delta):
 	var player = get_parent().get_child(0)
 	$HealthBar.max_value = player.MAX_HEALTH
 	$HealthBar.value = player.current_health
-	$HealthLabel.text = str(player.current_health) + "/" + str(player.MAX_HEALTH)
+	
+	var map_manager = get_parent().get_parent()
+	var level_end = map_manager.level_end
+	var time_left = level_end - Time.get_unix_time_from_system()
+	
+	var minutes_left = floor(time_left/60)
+	var seconds_left = time_left - (minutes_left * 60)
+	
+	$TimeLabel.text = ""  + str(minutes_left) + ":" + str(round(seconds_left)).pad_zeros(2)
+	
+	#$HealthLabel.text = str(player.current_health) + "/" + str(player.MAX_HEALTH)
 
 func increase_score(points):
 	score += points

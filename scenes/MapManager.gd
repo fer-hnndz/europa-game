@@ -20,6 +20,10 @@ func _process(delta):
 	if Time.get_unix_time_from_system() < level_end:
 		return
 
+	if Time.get_unix_time_from_system() < level_end + 4 and Time.get_unix_time_from_system() < level_end:
+		get_child(0).get_child(0)._despawn()
+		return
+	
 	print("Changing map")
 	level_end = Time.get_unix_time_from_system() + level_duration
 	

@@ -1,5 +1,5 @@
-extends Sprite2D
-
+extends StaticBody2D
+var damage_caused = 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -8,10 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.x -= 30 * delta
-	
-	if (position.x < -100):
-		position.x = 1400
-		position.y += 50
-		
-	rotation_degrees += 7 * delta
+	pass

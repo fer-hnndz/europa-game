@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7osv28bc6uve"]
+
+[ext_resource type="PackedScene" uid="uid://dj70kpkttcguv" path="res://scenes/characters/Player.tscn" id="1_k72r0"]
+[ext_resource type="PackedScene" uid="uid://d1trffgcr05ky" path="res://scenes/menus/PlayerUI.tscn" id="2_wsro3"]
+[ext_resource type="PackedScene" uid="uid://3s6xh32f3pxh" path="res://scenes/stage_controller.tscn" id="3_bhsf1"]
+[ext_resource type="PackedScene" uid="uid://dj7xs40ybe5hl" path="res://scenes/characters/TestPlatform.tscn" id="4_msmy8"]
+[ext_resource type="PackedScene" uid="uid://c1d8thyqo237g" path="res://scenes/characters/HotSurface.tscn" id="6_2jnxg"]
+[ext_resource type="PackedScene" uid="uid://cr15faslscom2" path="res://scenes/characters/moving_platform2.tscn" id="7_wnj0r"]
+[ext_resource type="PackedScene" uid="uid://ca6t7h31vj3t4" path="res://scenes/characters/WorldBlockMap3.tscn" id="7_yqu2a"]
+[ext_resource type="Texture2D" uid="uid://vcilfmv8ri5w" path="res://sprites/Purple_Nebula.png" id="8_k575j"]
+[ext_resource type="PackedScene" uid="uid://k8ktht1gbw30" path="res://scenes/characters/moving_platform.tscn" id="10_weoce"]
+
+[node name="Map3" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_k72r0")]
+position = Vector2(1146, 537)
+
+[node name="PlayerUI" parent="." instance=ExtResource("2_wsro3")]
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+
+[node name="StageController" parent="." instance=ExtResource("3_bhsf1")]
+position = Vector2(318, 438)
+
+[node name="TestPlatform" parent="." instance=ExtResource("4_msmy8")]
+position = Vector2(630, -64)
+scale = Vector2(3.76, 1)
+
+[node name="TestPlatform2" parent="." instance=ExtResource("4_msmy8")]
+position = Vector2(-22, 428)
+rotation = 1.57209
+scale = Vector2(3.19995, 1)
+
+[node name="TestPlatform3" parent="." instance=ExtResource("4_msmy8")]
+position = Vector2(1298, 433)
+rotation = 1.57209
+scale = Vector2(3.19995, 1)
+
+[node name="HotSurface" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(34, 706)
+
+[node name="HotSurface2" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(109, 706)
+
+[node name="HotSurface3" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(184, 706)
+
+[node name="HotSurface4" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(259, 706)
+
+[node name="HotSurface5" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(334, 706)
+
+[node name="HotSurface6" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(409, 706)
+
+[node name="HotSurface7" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(484, 706)
+
+[node name="HotSurface8" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(559, 706)
+
+[node name="HotSurface9" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(634, 706)
+
+[node name="HotSurface10" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(709, 706)
+
+[node name="HotSurface11" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(784, 706)
+
+[node name="HotSurface12" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(859, 706)
+
+[node name="HotSurface13" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(934, 706)
+
+[node name="HotSurface14" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(1009, 706)
+
+[node name="HotSurface15" parent="." instance=ExtResource("6_2jnxg")]
+position = Vector2(1084, 706)
+
+[node name="Moving Platform" parent="." instance=ExtResource("10_weoce")]
+position = Vector2(395, 570)
+
+[node name="Moving Platform2" parent="." instance=ExtResource("10_weoce")]
+position = Vector2(491, 570)
+
+[node name="Moving Platform3" parent="." instance=ExtResource("10_weoce")]
+position = Vector2(395, 170)
+
+[node name="Moving Platform4" parent="." instance=ExtResource("10_weoce")]
+position = Vector2(491, 170)
+
+[node name="Moving Platform5" parent="." instance=ExtResource("7_wnj0r")]
+position = Vector2(50, 350)
+
+[node name="Moving Platform6" parent="." instance=ExtResource("7_wnj0r")]
+position = Vector2(147, 350)
+
+[node name="Moving Platform7" parent="." instance=ExtResource("7_wnj0r")]
+position = Vector2(800, 350)
+
+[node name="Moving Platform8" parent="." instance=ExtResource("7_wnj0r")]
+position = Vector2(896, 350)
+
+[node name="WorldBlock" parent="." instance=ExtResource("7_yqu2a")]
+position = Vector2(1217, 652)
+scale = Vector2(2, 2)
+
+[node name="PurpleNebula" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(716, 462.5)
+scale = Vector2(1.47461, 1.10059)
+texture = ExtResource("8_k575j")

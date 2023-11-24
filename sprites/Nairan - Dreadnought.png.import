@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dx3ovng4mdfi2"
-path="res://.godot/imported/Battlecruisers.png-2c8a261ed49952345ecac7fa04fc3f68.ctex"
+uid="uid://bpx04defp8pa4"
+path="res://.godot/imported/Nairan - Dreadnought.png-174a5b7beaa1d565639a49e2641aa9f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Battlecruisers.png"
-dest_files=["res://.godot/imported/Battlecruisers.png-2c8a261ed49952345ecac7fa04fc3f68.ctex"]
+source_file="res://sprites/Nairan - Dreadnought.png"
+dest_files=["res://.godot/imported/Nairan - Dreadnought.png-174a5b7beaa1d565639a49e2641aa9f9.ctex"]
 
 [params]
 

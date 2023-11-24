@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7xc3q4a85i7o"]
+
+[ext_resource type="Texture2D" uid="uid://jogrqwjq0qm" path="res://sprites/RunnerTileSet.png" id="1_s4qug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oq4h"]
+size = Vector2(160, 36)
+
+[node name="Horizontal Platform" type="StaticBody2D"]
+collision_layer = 8
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, 0)
+scale = Vector2(1.66667, 2.1875)
+texture = ExtResource("1_s4qug")
+region_enabled = true
+region_rect = Rect2(320, 0, 96, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7oq4h")

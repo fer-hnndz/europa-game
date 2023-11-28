@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1d8thyqo237g"]
+
+[ext_resource type="Script" path="res://scenes/characters/HotSurface.gd" id="1_llelt"]
+[ext_resource type="Texture2D" uid="uid://jogrqwjq0qm" path="res://sprites/RunnerTileSet.png" id="2_igsfo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whmjy"]
+size = Vector2(37.4708, 13.9891)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_secyb"]
+size = Vector2(37.4708, 13.9891)
+
+[node name="HotSurface" type="StaticBody2D"]
+scale = Vector2(2.00156, 2.00156)
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_llelt")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7.7486e-07, -5.96046e-08)
+scale = Vector2(3.08093, 1.27174)
+texture = ExtResource("2_igsfo")
+region_enabled = true
+region_rect = Rect2(234, 28, 12, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_whmjy")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_secyb")

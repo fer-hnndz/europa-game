@@ -7,7 +7,9 @@ var currentMap = -1
 
 var maps = [
 	preload("res://scenes/Map1.tscn"),
-	preload("res://scenes/Map2.tscn")
+	preload("res://scenes/Map2.tscn"),
+	preload("res://scenes/Map3.tscn"),
+	preload("res://scenes/Map4.tscn")
 ]
 
 # Called when the node enters the scene tree for the first time.

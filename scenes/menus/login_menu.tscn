@@ -1,16 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://dsp6cve3hn4tn"]
+[gd_scene load_steps=12 format=3 uid="uid://dsp6cve3hn4tn"]
 
 [ext_resource type="Script" path="res://scipts/login_menu.gd" id="1_grfim"]
-[ext_resource type="Texture2D" uid="uid://i7xfycfskt1o" path="res://sprites/Spaceship.png" id="2_8flnd"]
 [ext_resource type="AudioStream" uid="uid://da11n77gyim7d" path="res://Sounds/FUI Holographic Button Press-1.wav" id="2_g0slo"]
 [ext_resource type="Texture2D" uid="uid://vcilfmv8ri5w" path="res://sprites/Purple_Nebula.png" id="2_hffe1"]
+[ext_resource type="Texture2D" uid="uid://bpllawow2dpx1" path="res://sprites/space craft.png" id="3_p64i6"]
 [ext_resource type="Script" path="res://scipts/Spaceship.gd" id="4_3sgda"]
-[ext_resource type="Texture2D" uid="uid://dktg82aiu7ui7" path="res://sprites/Asteroids#01.png" id="4_wnsxm"]
+[ext_resource type="Texture2D" uid="uid://bjof4nyblp6us" path="res://sprites/asteroids .png" id="5_vdo47"]
 [ext_resource type="Script" path="res://scipts/Asteroids.gd" id="6_fsxmi"]
 [ext_resource type="Texture2D" uid="uid://c5tcvdtn048rc" path="res://sprites/asteroid belt.png" id="7_dtme8"]
 [ext_resource type="Script" path="res://scipts/AsteroidBelt.gd" id="8_cd3y0"]
-[ext_resource type="Texture2D" uid="uid://dx3ovng4mdfi2" path="res://sprites/Battlecruisers.png" id="9_r1uyg"]
-[ext_resource type="Script" path="res://scipts/EnemyShip.gd" id="10_4ymlg"]
+[ext_resource type="PackedScene" uid="uid://dxkvt3yu7c45k" path="res://scenes/menus/animated_enemy_ship.tscn" id="9_f4mpr"]
 
 [sub_resource type="SystemFont" id="SystemFont_qg5ip"]
 
@@ -31,36 +30,32 @@ texture = ExtResource("2_hffe1")
 [node name="Spaceship" type="Sprite2D" parent="."]
 position = Vector2(0.702535, 112.703)
 rotation = 1.5708
-scale = Vector2(4.30855, 3.93354)
-texture = ExtResource("2_8flnd")
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_p64i6")
 script = ExtResource("4_3sgda")
 
 [node name="Asteroids" type="Sprite2D" parent="."]
-position = Vector2(1123, 441)
-scale = Vector2(3.24038, 3.22437)
-texture = ExtResource("4_wnsxm")
+position = Vector2(1097, 440)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_vdo47")
 script = ExtResource("6_fsxmi")
 
 [node name="AsteroidBelt" type="Sprite2D" parent="."]
 position = Vector2(1247.71, 362.352)
 rotation = 0.876155
-scale = Vector2(2.83528, 3.0622)
+scale = Vector2(2, 2.16)
 texture = ExtResource("7_dtme8")
 script = ExtResource("8_cd3y0")
 
 [node name="Asteroids3" type="Sprite2D" parent="."]
 position = Vector2(1440.11, 279.68)
-rotation = 0.745256
-scale = Vector2(3.24038, 3.22437)
-texture = ExtResource("4_wnsxm")
+rotation = 1.48877
+scale = Vector2(0.4, 0.398)
+texture = ExtResource("5_vdo47")
 script = ExtResource("6_fsxmi")
 
-[node name="EnemyShip" type="Sprite2D" parent="."]
-position = Vector2(1228, 859)
-rotation = 4.71239
-scale = Vector2(1.17956, 0.881227)
-texture = ExtResource("9_r1uyg")
-script = ExtResource("10_4ymlg")
+[node name="AnimatedEnemyShip" parent="." instance=ExtResource("9_f4mpr")]
+position = Vector2(1250, 600)
 
 [node name="Username" type="TextEdit" parent="."]
 layout_mode = 0

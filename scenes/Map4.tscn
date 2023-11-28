@@ -1,0 +1,271 @@
+[gd_scene load_steps=12 format=3 uid="uid://2okkxyfxgxom"]
+
+[ext_resource type="PackedScene" uid="uid://dj70kpkttcguv" path="res://scenes/characters/Player.tscn" id="1_p6b05"]
+[ext_resource type="PackedScene" uid="uid://d1trffgcr05ky" path="res://scenes/menus/PlayerUI.tscn" id="2_qj5fc"]
+[ext_resource type="PackedScene" uid="uid://3s6xh32f3pxh" path="res://scenes/stage_controller.tscn" id="3_s221l"]
+[ext_resource type="PackedScene" uid="uid://dj7xs40ybe5hl" path="res://scenes/characters/TestPlatform.tscn" id="5_331mi"]
+[ext_resource type="PackedScene" uid="uid://bil447fk554jo" path="res://scenes/characters/WorldBlockMap4.tscn" id="6_68byh"]
+[ext_resource type="PackedScene" uid="uid://c1d8thyqo237g" path="res://scenes/characters/HotSurface.tscn" id="7_3vhjl"]
+[ext_resource type="PackedScene" uid="uid://c7xc3q4a85i7o" path="res://scenes/characters/horizontal_platformMap4.tscn" id="7_cdrno"]
+[ext_resource type="PackedScene" uid="uid://b3uft7h6d1kkl" path="res://scenes/characters/TijerasMetalicas.tscn" id="8_unkli"]
+[ext_resource type="PackedScene" uid="uid://c0vikbk11bm2y" path="res://scenes/characters/PerfilesMetalicos.tscn" id="9_566e1"]
+[ext_resource type="PackedScene" uid="uid://k8ktht1gbw30" path="res://scenes/characters/moving_platform.tscn" id="10_a33gm"]
+[ext_resource type="Texture2D" uid="uid://vcilfmv8ri5w" path="res://sprites/Purple_Nebula.png" id="11_lpplg"]
+
+[node name="Map4" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_p6b05")]
+position = Vector2(92, 496)
+
+[node name="PlayerUI" parent="." instance=ExtResource("2_qj5fc")]
+offset_left = -1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = 1.0
+
+[node name="StageController" parent="." instance=ExtResource("3_s221l")]
+position = Vector2(416, 435)
+
+[node name="TestPlatform" parent="." instance=ExtResource("5_331mi")]
+position = Vector2(630, -64)
+scale = Vector2(3.76, 1)
+
+[node name="TestPlatform2" parent="." instance=ExtResource("5_331mi")]
+position = Vector2(-22, 428)
+rotation = 1.57209
+scale = Vector2(3.19995, 1)
+
+[node name="TestPlatform3" parent="." instance=ExtResource("5_331mi")]
+position = Vector2(1298, 433)
+rotation = 1.57209
+scale = Vector2(3.19995, 1)
+
+[node name="WorldBlock" parent="." instance=ExtResource("6_68byh")]
+position = Vector2(62, 671)
+scale = Vector2(2.67948, 2.67948)
+
+[node name="WorldBlock2" parent="." instance=ExtResource("6_68byh")]
+position = Vector2(514, 785)
+scale = Vector2(2, 2)
+
+[node name="WorldBlock3" parent="." instance=ExtResource("6_68byh")]
+position = Vector2(707, 785)
+scale = Vector2(2, 2)
+
+[node name="WorldBlock5" parent="." instance=ExtResource("6_68byh")]
+position = Vector2(922, 807)
+scale = Vector2(2.47, 2.47)
+
+[node name="WorldBlock4" parent="." instance=ExtResource("6_68byh")]
+position = Vector2(1089, 738)
+
+[node name="HotSurface" parent="." instance=ExtResource("7_3vhjl")]
+position = Vector2(229, 704)
+
+[node name="HotSurface2" parent="." instance=ExtResource("7_3vhjl")]
+position = Vector2(304, 704)
+
+[node name="HotSurface3" parent="." instance=ExtResource("7_3vhjl")]
+position = Vector2(379, 704)
+
+[node name="HotSurface4" parent="." instance=ExtResource("7_3vhjl")]
+position = Vector2(1175, 706)
+
+[node name="HotSurface5" parent="." instance=ExtResource("7_3vhjl")]
+position = Vector2(1250, 706)
+
+[node name="Horizontal Platform" parent="." instance=ExtResource("7_cdrno")]
+position = Vector2(76, 255)
+
+[node name="Horizontal Platform7" parent="." instance=ExtResource("7_cdrno")]
+position = Vector2(624, 495)
+scale = Vector2(0.98, 0.98)
+
+[node name="Tijera Metalica" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(496, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica2" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(496, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica3" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(623, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica4" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(623, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica5" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(623, 542)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica6" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(750, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica7" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(750, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica8" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(750, 542)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica9" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(877, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica10" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(876, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica11" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(876, 542)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica12" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(877, 483)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica13" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(877, 424)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica14" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(1003, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica15" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(1003, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica16" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(1003, 542)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica17" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(1003, 483)
+scale = Vector2(0.7, 0.7)
+
+[node name="Tijera Metalica18" parent="." instance=ExtResource("8_unkli")]
+position = Vector2(1003, 424)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(433, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico3" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(433, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico4" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(560, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico8" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(560, 542)
+scale = Vector2(0.7, 0.7)
+
+[node name="Horizontal Platform6" parent="." instance=ExtResource("7_cdrno")]
+position = Vector2(496, 555)
+scale = Vector2(0.98, 0.98)
+
+[node name="Perfil Metalico5" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(687, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico7" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(687, 542)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico9" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(814, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico10" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(814, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico11" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(814, 542)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico12" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(814, 483)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico13" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(814, 424)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico14" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(940, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico15" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(940, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico16" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(940, 542)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico17" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(940, 483)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico18" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(940, 424)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico19" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(1065, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico20" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(1065, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico21" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(1065, 542)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico22" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(1065, 483)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico23" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(1065, 424)
+scale = Vector2(0.7, 0.7)
+
+[node name="Horizontal Platform8" parent="." instance=ExtResource("7_cdrno")]
+position = Vector2(751, 495)
+scale = Vector2(0.98, 0.98)
+
+[node name="Horizontal Platform9" parent="." instance=ExtResource("7_cdrno")]
+position = Vector2(878, 377)
+scale = Vector2(0.98, 0.98)
+
+[node name="Horizontal Platform10" parent="." instance=ExtResource("7_cdrno")]
+position = Vector2(1000, 377)
+scale = Vector2(0.98, 0.98)
+
+[node name="Perfil Metalico2" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(560, 660)
+scale = Vector2(0.7, 0.7)
+
+[node name="Perfil Metalico6" parent="." instance=ExtResource("9_566e1")]
+position = Vector2(687, 601)
+scale = Vector2(0.7, 0.7)
+
+[node name="Moving Platform" parent="." instance=ExtResource("10_a33gm")]
+position = Vector2(328, 295)
+
+[node name="MapBg" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(603, 357)
+scale = Vector2(1.46289, 1.14453)
+texture = ExtResource("11_lpplg")

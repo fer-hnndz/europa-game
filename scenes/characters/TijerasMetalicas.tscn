@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3uft7h6d1kkl"]
+
+[ext_resource type="Texture2D" uid="uid://jogrqwjq0qm" path="res://sprites/RunnerTileSet.png" id="1_1n10q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7oq4h"]
+size = Vector2(139, 84)
+
+[node name="Tijera Metalica" type="StaticBody2D"]
+collision_layer = 8
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.05882, 1.77083)
+texture = ExtResource("1_1n10q")
+region_enabled = true
+region_rect = Rect2(206, 128, 68, 48)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_7oq4h")

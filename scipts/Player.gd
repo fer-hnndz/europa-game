@@ -65,9 +65,7 @@ func _physics_process(delta):
 		spawned = true
 		$AnimatedSprite2D.animation = "idle"
 		$AnimatedSprite2D.play()
-		print("Ya se puede mover")
-		print("Ya se puede mover")
-		print("Ya se puede mover")
+		print("[Player physics] Ya se puede mover")
 	
 	# Si la animacion de muerte termino, mostrar pantalla de muerte
 	if ($AnimatedSprite2D.animation == "death" and $AnimatedSprite2D.frame ==  4) and not death_screen_visible:
@@ -155,9 +153,7 @@ func process_movement(delta):
 		
 		dash_ready.visible = false
 		dash_reloading.visible = true
-		
-		
-	print(keepDashing)
+	
 	SPEED = DASH_SPEED if keepDashing else NORMAL_SPEED
 	
 	
@@ -303,5 +299,5 @@ func process_playerFire(delta):
 
 # Funcion ejecutada cuando un cuerpo entra en contacto con el jugador
 func _on_hitbox_area_entered(area):
-	print(area.get_parent().name)
+	#print(area.get_parent().name)
 	deal_damage(area.get_parent().damage_caused, area.get_parent().global_position)

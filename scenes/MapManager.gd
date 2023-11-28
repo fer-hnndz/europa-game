@@ -1,7 +1,7 @@
 extends Node2D
 
 #var level_duration = 1 * 60 + 15 # 1:15 
-var level_duration = 10
+var level_duration = 15
 var level_end = 0
 var currentMap = -1
 
@@ -23,6 +23,11 @@ func _process(delta):
 	if Time.get_unix_time_from_system() < level_end + 4 and Time.get_unix_time_from_system() < level_end:
 		get_child(0).get_child(0)._despawn()
 		return
+	
+	print("Saving player info")
+	#var last_player_health = get_child().get_child(0).current_health
+	#var last_exp = 
+	
 	
 	print("Changing map")
 	level_end = Time.get_unix_time_from_system() + level_duration

@@ -26,7 +26,7 @@ func _process(delta):
 	var minutes_left = floor(time_left/60)
 	var seconds_left = time_left - (minutes_left * 60)
 	
-	if seconds_left < 10:
+	if seconds_left < 10 and minutes_left > 0:
 		seconds_left = str(seconds_left).pad_zeros(2).pad_decimals(2)
 	else:
 		seconds_left = str(seconds_left).pad_decimals(0)
@@ -35,7 +35,7 @@ func _process(delta):
 	
 	if (time_left < 0):
 		$TimeLabel.text = "0:00";
-	elif (seconds_left == "01.01" or seconds_left == "02.01" or seconds_left == "03.01"):
+	elif (seconds_left == "01.01" or seconds_left == "02.01" or seconds_left == "03.01" and minutes_left > 0):
 		print("beep")
 		var beep_sound = preload("res://beep.ogg")
 	

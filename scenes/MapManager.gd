@@ -1,7 +1,7 @@
 extends Node2D
 
-#var level_duration = 1 * 60 + 15 # 1:15 
-var level_duration = 5
+var level_duration = 1 * 60 + 15 # 1:15 
+#var level_duration = 5 #este es para motivos de prueba
 var level_end = 0
 var currentMap = -1
 var last_player_health

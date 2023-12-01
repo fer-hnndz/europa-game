@@ -76,8 +76,13 @@ func spawn_enemies(enemies: int):
 		print("added")
 
 func generate_rand_pos(player_pos) -> Vector2:
-	var xDiff = randi_range(150, 350)
-	var yDiff = randi_range(100, 250)
-	var valueModificator = randi_range(-1, 1)
+	var distance_from_player = randi_range(250, 400)
 	
-	return Vector2(player_pos.x + xDiff * valueModificator, player_pos.y + yDiff * valueModificator)
+	var value_modificator = 0
+	# Generar un numero aleatorio que no sea cero
+	while (value_modificator == 0):
+		value_modificator = randi_range(-1, 1)
+		
+	var enemy_x_pos = player_pos.x + (distance_from_player)
+	
+	return Vector2(player_pos.x + enemy_x_pos, player_pos.y)

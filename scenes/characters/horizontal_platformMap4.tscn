@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7xc3q4a85i7o"]
+[gd_scene load_steps=3 format=3 uid="uid://b7ng8drcl4htr"]
 
 [ext_resource type="Texture2D" uid="uid://jogrqwjq0qm" path="res://sprites/RunnerTileSet.png" id="1_s4qug"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7oq4h"]
-size = Vector2(160, 36)
+size = Vector2(154, 36)
 
 [node name="Horizontal Platform" type="StaticBody2D"]
 collision_layer = 8

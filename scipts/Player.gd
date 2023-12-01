@@ -22,6 +22,8 @@ const DASH_SPEED = NORMAL_SPEED * 4
 var dash_cooldown = 5
 var dash_available = 0
 var dash_end = 0
+var current_animation
+var current_frame
 
 var heavy_fire_available = 0
 @onready var dash_timer = Timer.new()
@@ -36,7 +38,7 @@ var heavy_bullet_ready
 var heavy_bullet_reloading
 var dash_ready
 var dash_reloading
-
+var has_despawned = false
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var stageControllerScript = preload("res://scipts/StageController.gd")
@@ -58,10 +60,18 @@ func _ready():
 
 func _despawn():
 	spawned = false
+	$AnimatedSprite2D.animation = "spawn"
+	$AnimatedSprite2D.frame = 4
+	$AnimatedSprite2D.play_backwards()
+	has_despawned = true
 	
 func _physics_process(delta):	
+	current_animation = $AnimatedSprite2D.animation
+	current_frame = $AnimatedSprite2D.frame
+	
+	
 	# Detectar si la animacion de spawn ha terminado
-	if ($AnimatedSprite2D.frame == 4 and spawned == false and $AnimatedSprite2D.animation != "death"):
+	if ($AnimatedSprite2D.frame == 5 and spawned == false and $AnimatedSprite2D.animation == "spawn"):
 		spawned = true
 		$AnimatedSprite2D.animation = "idle"
 		$AnimatedSprite2D.play()
@@ -73,6 +83,11 @@ func _physics_process(delta):
 		var death_screen = load("res://scenes/menus/DeathScreen.tscn").instantiate()
 		get_parent().add_child(death_screen)
 		death_screen_visible = true
+		
+		
+#	if ($AnimatedSprite2D.animation == "spawn" and $AnimatedSprite2D.frame == 0 and not has_despawned):
+#		print("DESPAWNEDDD")
+#		has_despawned = true
 		
 	if (spawned == false):
 		return

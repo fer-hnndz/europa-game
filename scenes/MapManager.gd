@@ -19,28 +19,39 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# No procesar nada si no se ha terminado el tiempo del nivel
 	if Time.get_unix_time_from_system() < level_end:
 		return
-
-	if Time.get_unix_time_from_system() < level_end + 4 and Time.get_unix_time_from_system() < level_end:
-		get_child(0).get_child(0)._despawn()
-		return
 	
-	print("Saving player info")
-	#var last_player_health = get_child().get_child(0).current_health
-	#var last_exp = 
-	
-	
+	var player = null
+	if (get_child_count() > 0):		
+		player = get_child(0).get_child(0)
+		
+	if (player != null):
+		print("Saving player info")
+		#var last_player_health = get_child().get_child(0).current_health
+		#var last_exp = 	
+		
+		if (not player.has_despawned):
+			print("[MapManager] despawning...")
+			player._despawn()
+		
+	# Esperar hasta que el jugador despawnee para cambiar de mapa
+	if (player != null):
+		if (not (player.has_despawned and player.current_animation == "spawn" and player.current_frame == 0)):
+			return
+		
 	print("Changing map")
-	level_end = Time.get_unix_time_from_system() + level_duration
-	
 	var new_map = currentMap
 	while (new_map == currentMap):
 		new_map = randi_range(0, maps.size() - 1)
 	
+	level_end = Time.get_unix_time_from_system() + level_duration
 	# Borrar el mapa actual
 	remove_child(get_child(0))
 	currentMap = new_map
 	
 	var loadedMap = maps[new_map].instantiate()
 	add_child(loadedMap)
+	
+	

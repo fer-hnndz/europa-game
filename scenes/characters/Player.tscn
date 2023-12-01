@@ -205,7 +205,7 @@ metadata/_edit_group_ = true
 position = Vector2(1, -19)
 scale = Vector2(1.78471, 1.78471)
 sprite_frames = SubResource("SpriteFrames_iimlh")
-animation = &"spawn"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.94119, -1.47059)

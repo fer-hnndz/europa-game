@@ -14,7 +14,6 @@ func _process(delta):
 	$Lbl_Points.text = str(score)
 	
 	
-	print("Score: " + str(score))
 	var player = get_parent().get_child(0)
 	$HealthBar.max_value = player.MAX_HEALTH
 	$HealthBar.value = player.current_health
@@ -26,16 +25,16 @@ func _process(delta):
 	var minutes_left = floor(time_left/60)
 	var seconds_left = time_left - (minutes_left * 60)
 	
-	if seconds_left < 10 and minutes_left > 0:
+	if seconds_left < 10 and minutes_left <= 0:
 		seconds_left = str(seconds_left).pad_zeros(2).pad_decimals(2)
 	else:
-		seconds_left = str(seconds_left).pad_decimals(0)
+		seconds_left = str(seconds_left).pad_decimals(0).pad_zeros(2)
 	
 	$TimeLabel.text = ""  + str(minutes_left) + ":" + seconds_left
 	
 	if (time_left < 0):
 		$TimeLabel.text = "0:00";
-	elif (seconds_left == "01.01" or seconds_left == "02.01" or seconds_left == "03.01" and minutes_left > 0):
+	elif (seconds_left == "01.01" or seconds_left == "02.00" or seconds_left == "03.01" and minutes_left <= 0):
 		print("beep")
 		var beep_sound = preload("res://beep.ogg")
 	

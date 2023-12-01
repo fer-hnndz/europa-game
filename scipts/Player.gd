@@ -18,6 +18,7 @@ var isStunned = false
 var death_screen_visible = false
 const NORMAL_SPEED = 15000
 const DASH_SPEED = NORMAL_SPEED * 4
+var invencibility_end = 0
 
 var dash_cooldown = 5
 var dash_available = 0
@@ -92,6 +93,9 @@ func _physics_process(delta):
 	if (spawned == false):
 		return
 	
+	if (invencibility_end < Time.get_unix_time_from_system()):
+		$AnimatedSprite2D.modulate = Color.WHITE
+	
 	if (current_health <= 0):
 		print("Tu ta muelto broder")
 		player_ui_controller.set_highscore_info(player_ui_controller.score)
@@ -116,19 +120,24 @@ func _physics_process(delta):
 		
 
 func deal_damage(damage: int, origin: Vector2):
+	
+	if (invencibility_end > Time.get_unix_time_from_system()):
+		return
+	
 	current_health -= damage;
 	
 	if current_health < 0:
 		current_health = 0
 	
 	var knockback_direction = origin.direction_to(global_position)
-	var strength = damage * knockack_modifier
+	var strength = (damage * damage * damage * damage * damage)
 	var knockback = knockback_direction * strength
 	
 	velocity = knockback
 	move_and_slide()
 	print("[Player.gd - deal_damag] aplicado")
-	lastReceivedAttack = Time.get_unix_time_from_system()
+	invencibility_end = Time.get_unix_time_from_system() + 2.5
+	$AnimatedSprite2D.modulate = Color(255, 0, 61)
 #
 #=================
 # Funciones de Laser

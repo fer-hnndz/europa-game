@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://d1trffgcr05ky"]
 
 [ext_resource type="Script" path="res://scipts/PlayerUIController.gd" id="1_pi1tq"]
-[ext_resource type="Texture2D" uid="uid://c7qye8lba2n53" path="res://sprites/running.png" id="2_nbwpr"]
+[ext_resource type="Texture2D" uid="uid://disi35u3eodj4" path="res://sprites/dashing icon.png" id="3_w1ccr"]
 [ext_resource type="Texture2D" uid="uid://dewa5awr3al8w" path="res://sprites/heavyBulletReady.png" id="4_jvto1"]
 [ext_resource type="FontFile" uid="uid://cbwpvnddf85ac" path="res://sprites/PublicPixel-z84yD.ttf" id="5_3ly2r"]
 
@@ -89,14 +89,14 @@ label_settings = SubResource("LabelSettings_0lubi")
 [node name="DashReloading" type="Sprite2D" parent="."]
 modulate = Color(1, 0.164706, 0.196078, 0.537255)
 position = Vector2(588, 111)
-scale = Vector2(2, 2)
-texture = ExtResource("2_nbwpr")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_w1ccr")
 
 [node name="DashReady" type="Sprite2D" parent="."]
 modulate = Color(0.968627, 1, 1, 1)
 position = Vector2(588, 111)
-scale = Vector2(2, 2)
-texture = ExtResource("2_nbwpr")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_w1ccr")
 
 [node name="HeavyBulletReloading" type="Sprite2D" parent="."]
 modulate = Color(0.999799, 0.256112, 0.236864, 1)

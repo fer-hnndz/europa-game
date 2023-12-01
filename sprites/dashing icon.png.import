@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7qye8lba2n53"
-path="res://.godot/imported/running.png-b218362b70203f5538876141124390a0.ctex"
+uid="uid://disi35u3eodj4"
+path="res://.godot/imported/dashing icon.png-f50abdb269a6d01aff428cf259fb20a6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/running.png"
-dest_files=["res://.godot/imported/running.png-b218362b70203f5538876141124390a0.ctex"]
+source_file="res://sprites/dashing icon.png"
+dest_files=["res://.godot/imported/dashing icon.png-f50abdb269a6d01aff428cf259fb20a6.ctex"]
 
 [params]
 

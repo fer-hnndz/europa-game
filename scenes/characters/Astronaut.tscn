@@ -3,13 +3,13 @@
 [ext_resource type="Script" path="res://scipts/Astronaut.gd" id="1_wc4c8"]
 [ext_resource type="Texture2D" uid="uid://cv3be40dy1i03" path="res://sprites/sunstar_playable_by_boberatu_da06suo.png" id="2_jchei"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r4pc8"]
-atlas = ExtResource("2_jchei")
-region = Rect2(126, 171, 42, 57)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_34fdr"]
 atlas = ExtResource("2_jchei")
 region = Rect2(165, 171, 41, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4pc8"]
+atlas = ExtResource("2_jchei")
+region = Rect2(126, 171, 42, 57)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n5j2r"]
 atlas = ExtResource("2_jchei")
@@ -35,9 +35,6 @@ region = Rect2(130, 3, 43, 65)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_r4pc8")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_34fdr")
 }, {
 "duration": 1.0,
@@ -45,6 +42,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_34fdr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4pc8")
 }],
 "loop": false,
 "name": &"damage",
@@ -105,10 +105,12 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.76471, 8.52942)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mg1pw")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(7.64706, 9.11765)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7bq6p")

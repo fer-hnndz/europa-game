@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcsfnxprvs78x"]
+[gd_scene load_steps=9 format=3 uid="uid://dcsfnxprvs78x"]
 
 [ext_resource type="PackedScene" uid="uid://bxojvg5s51pca" path="res://scenes/characters/horizontal_platform.tscn" id="1_i5wed"]
 [ext_resource type="PackedScene" uid="uid://dj7xs40ybe5hl" path="res://scenes/characters/TestPlatform.tscn" id="2_ivv8w"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3s6xh32f3pxh" path="res://scenes/stage_controller.tscn" id="5_bbqsl"]
 [ext_resource type="PackedScene" uid="uid://ddlrvgsdgjlix" path="res://scenes/characters/WorldBlock.tscn" id="6_kanb0"]
 [ext_resource type="PackedScene" uid="uid://07cigku5in43" path="res://scenes/characters/Spike.tscn" id="7_1vr0l"]
+[ext_resource type="Texture2D" uid="uid://djb6r1mikxhec" path="res://sprites/europa_bg.png" id="8_1dqgs"]
 
 [node name="Map1" type="Node2D"]
 
@@ -121,3 +122,9 @@ position = Vector2(836, 672)
 
 [node name="Spike16" parent="." instance=ExtResource("7_1vr0l")]
 position = Vector2(868, 672)
+
+[node name="EuropaBg" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(547, 370)
+scale = Vector2(3, 3)
+texture = ExtResource("8_1dqgs")

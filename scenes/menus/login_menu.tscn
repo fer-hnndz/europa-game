@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://scipts/Asteroids.gd" id="6_fsxmi"]
 [ext_resource type="Texture2D" uid="uid://c5tcvdtn048rc" path="res://sprites/asteroid belt.png" id="7_dtme8"]
 [ext_resource type="Script" path="res://scipts/AsteroidBelt.gd" id="8_cd3y0"]
-[ext_resource type="PackedScene" path="res://scenes/menus/animated_enemy_ship.tscn" id="9_f4mpr"]
+[ext_resource type="PackedScene" uid="uid://dxkvt3yu7c45k" path="res://scenes/menus/animated_enemy_ship.tscn" id="9_f4mpr"]
 [ext_resource type="Texture2D" uid="uid://do2w5f4xx3y8g" path="res://Europa.png" id="11_dcbna"]
 
 [sub_resource type="SystemFont" id="SystemFont_qg5ip"]

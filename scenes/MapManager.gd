@@ -8,6 +8,8 @@ var last_player_health
 var last_exp
 var map_changes = 0
 
+@onready var music:AudioStreamPlayer = $"/root/MenuMusic"
+
 var maps = [
 	preload("res://scenes/Map1.tscn"),
 	preload("res://scenes/Map2.tscn"),
@@ -18,6 +20,7 @@ var maps = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+	music.stop()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

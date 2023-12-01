@@ -84,28 +84,28 @@ position = Vector2(1009, 706)
 position = Vector2(1084, 706)
 
 [node name="Moving Platform" parent="." instance=ExtResource("10_weoce")]
-position = Vector2(395, 570)
+position = Vector2(50, 410)
 
 [node name="Moving Platform2" parent="." instance=ExtResource("10_weoce")]
-position = Vector2(491, 570)
+position = Vector2(147, 410)
 
 [node name="Moving Platform3" parent="." instance=ExtResource("10_weoce")]
-position = Vector2(395, 170)
+position = Vector2(800, 410)
 
 [node name="Moving Platform4" parent="." instance=ExtResource("10_weoce")]
-position = Vector2(491, 170)
+position = Vector2(896, 410)
 
 [node name="Moving Platform5" parent="." instance=ExtResource("7_wnj0r")]
-position = Vector2(50, 350)
+position = Vector2(395, 630)
 
 [node name="Moving Platform6" parent="." instance=ExtResource("7_wnj0r")]
-position = Vector2(147, 350)
+position = Vector2(491, 630)
 
 [node name="Moving Platform7" parent="." instance=ExtResource("7_wnj0r")]
-position = Vector2(800, 350)
+position = Vector2(395, 230)
 
 [node name="Moving Platform8" parent="." instance=ExtResource("7_wnj0r")]
-position = Vector2(896, 350)
+position = Vector2(491, 230)
 
 [node name="WorldBlock" parent="." instance=ExtResource("7_yqu2a")]
 position = Vector2(1217, 652)

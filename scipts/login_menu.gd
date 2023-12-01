@@ -7,9 +7,12 @@ const LOGIN_INFO = "user://login_info.txt"
 var isLogin = true
 
 func _ready():
+	print(accounts)
 	load_login_info()
 
 func _on_login_button_down():
+	
+	print(accounts)
 	if isLogin:
 		if $Username.text == "" or $Password.text == "":
 			$btnPressedError.play()

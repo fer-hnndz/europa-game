@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://1tbmc5hii8vp"]
+[gd_scene load_steps=8 format=3 uid="uid://1tbmc5hii8vp"]
 
 [ext_resource type="PackedScene" uid="uid://d1trffgcr05ky" path="res://scenes/menus/PlayerUI.tscn" id="1_cbuym"]
 [ext_resource type="PackedScene" uid="uid://bxojvg5s51pca" path="res://scenes/characters/horizontal_platform.tscn" id="1_ymeco"]
 [ext_resource type="PackedScene" uid="uid://dj70kpkttcguv" path="res://scenes/characters/Player.tscn" id="2_v8tq1"]
 [ext_resource type="PackedScene" uid="uid://3s6xh32f3pxh" path="res://scenes/stage_controller.tscn" id="4_4recc"]
+[ext_resource type="Texture2D" uid="uid://b04ee6liuc0as" path="res://Starfield_03-1024x1024.png" id="5_ownl3"]
+[ext_resource type="PackedScene" uid="uid://07cigku5in43" path="res://scenes/characters/Spike.tscn" id="6_t7y44"]
+[ext_resource type="PackedScene" uid="uid://dj7xs40ybe5hl" path="res://scenes/characters/TestPlatform.tscn" id="7_5ch3c"]
 
 [node name="Map2" type="Node2D"]
 
@@ -22,11 +25,136 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="Horizontal Platform" parent="." instance=ExtResource("1_ymeco")]
-position = Vector2(748, 837)
+position = Vector2(727, 874)
 scale = Vector2(-7.11206, -7.11206)
 
 [node name="Horizontal Platform2" parent="." instance=ExtResource("1_ymeco")]
-position = Vector2(615, 398)
+position = Vector2(68, 548)
+scale = Vector2(0.44, 0.44)
+
+[node name="Horizontal Platform3" parent="." instance=ExtResource("1_ymeco")]
+position = Vector2(68, 281)
+scale = Vector2(0.44, 0.44)
+
+[node name="Horizontal Platform4" parent="." instance=ExtResource("1_ymeco")]
+position = Vector2(631, 493)
+scale = Vector2(0.44, 0.44)
+
+[node name="Horizontal Platform5" parent="." instance=ExtResource("1_ymeco")]
+position = Vector2(1210, 559)
+scale = Vector2(0.44, 0.44)
+
+[node name="Horizontal Platform6" parent="." instance=ExtResource("1_ymeco")]
+position = Vector2(1210, 271)
+scale = Vector2(0.44, 0.44)
 
 [node name="StageController" parent="." instance=ExtResource("4_4recc")]
 position = Vector2(-52, 12)
+
+[node name="Starfield03-1024x1024" type="Sprite2D" parent="."]
+z_index = -1
+texture_filter = 6
+position = Vector2(675, 560)
+scale = Vector2(2.01837, 2.01837)
+texture = ExtResource("5_ownl3")
+
+[node name="Spike5" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(154, 699)
+
+[node name="Spike6" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(186, 699)
+
+[node name="Spike7" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(218, 699)
+
+[node name="Spike8" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(250, 699)
+
+[node name="Spike9" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(282, 699)
+
+[node name="Spike10" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(314, 699)
+
+[node name="Spike11" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(346, 699)
+
+[node name="Spike12" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(378, 699)
+
+[node name="Spike13" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(410, 699)
+
+[node name="Spike14" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(442, 699)
+
+[node name="Spike15" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(474, 699)
+
+[node name="Spike16" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(506, 699)
+
+[node name="Spike17" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(538, 699)
+
+[node name="Spike18" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(570, 699)
+
+[node name="Spike19" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(602, 699)
+
+[node name="Spike20" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(634, 699)
+
+[node name="Spike21" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(667, 699)
+
+[node name="Spike22" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(699, 699)
+
+[node name="Spike23" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(731, 699)
+
+[node name="Spike24" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(764, 699)
+
+[node name="Spike25" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(797, 699)
+
+[node name="Spike26" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(830, 699)
+
+[node name="Spike27" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(863, 699)
+
+[node name="Spike28" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(896, 699)
+
+[node name="Spike29" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(928, 699)
+
+[node name="Spike30" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(960, 699)
+
+[node name="Spike31" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(992, 699)
+
+[node name="Spike32" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(1024, 699)
+
+[node name="Spike33" parent="." instance=ExtResource("6_t7y44")]
+position = Vector2(1056, 699)
+
+[node name="TestPlatform" parent="." instance=ExtResource("7_5ch3c")]
+position = Vector2(-21, 409)
+rotation = 1.5708
+scale = Vector2(7.2423, 1)
+
+[node name="TestPlatform2" parent="." instance=ExtResource("7_5ch3c")]
+position = Vector2(1303, 493)
+rotation = 1.5708
+scale = Vector2(6.66013, 0.787046)
+
+[node name="TestPlatform3" parent="." instance=ExtResource("7_5ch3c")]
+position = Vector2(506, -31)
+scale = Vector2(17.84, 1)

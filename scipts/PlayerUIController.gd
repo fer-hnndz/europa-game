@@ -10,6 +10,11 @@ func _ready():
 #func _process_healthbar():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	# Actualizar xp text
+	$Lbl_Points.text = str(score)
+	
+	
+	print("Score: " + str(score))
 	var player = get_parent().get_child(0)
 	$HealthBar.max_value = player.MAX_HEALTH
 	$HealthBar.value = player.current_health
@@ -28,7 +33,9 @@ func _process(delta):
 	
 	$TimeLabel.text = ""  + str(minutes_left) + ":" + seconds_left
 	
-	if (seconds_left == "01.01" or seconds_left == "02.01" or seconds_left == "03.01"):
+	if (time_left < 0):
+		$TimeLabel.text = "0:00";
+	elif (seconds_left == "01.01" or seconds_left == "02.01" or seconds_left == "03.01"):
 		print("beep")
 		var beep_sound = preload("res://beep.ogg")
 	

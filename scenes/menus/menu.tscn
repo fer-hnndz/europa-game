@@ -56,6 +56,7 @@ offset_bottom = 159.0
 theme_override_font_sizes/font_size = 50
 text = "MENU PRINCIPAL"
 
+[connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="Logout" to="." method="_on_quit_pressed"]

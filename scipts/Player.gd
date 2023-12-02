@@ -137,7 +137,7 @@ func deal_damage(damage: int, origin: Vector2):
 	move_and_slide()
 	print("[Player.gd - deal_damag] aplicado")
 	invencibility_end = Time.get_unix_time_from_system() + 2.5
-	$AnimatedSprite2D.modulate = Color(255, 0, 61)
+	$AnimatedSprite2D.modulate = Color(Color.WHITE, 0.6)
 #
 #=================
 # Funciones de Laser

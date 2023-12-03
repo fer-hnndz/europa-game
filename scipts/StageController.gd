@@ -4,11 +4,14 @@ var stage = 0
 var wave = 1
 var min_enemies = 4
 var enemies
+var last_enemy_spawn = 0
+var last_y_pos = 0
 
 # Called when the node enters the scene tree for the first time.
 
 var bat = preload("res://scenes/characters/Bat.tscn")
 var stoneGolem = preload("res://scenes/characters/StoneGolem.tscn")
+var astronaut = preload("res://scenes/characters/Astronaut.tscn")
 
 var currentEnemies = 0
 
@@ -63,36 +66,28 @@ func spawn_enemies(enemies: int):
 	
 	for i in range(newStoneGolems):
 		var g = stoneGolem.instantiate()
-		g.global_position = generate_rand_pos(player_pos)
+		
+		g.global_position = generate_rand_pos()
 		currentEnemies += 1
 		get_parent().add_child(g)
 		
 	print("Generating: " + str(newBats) + " bats")
 	for i in range(newBats):
 		var b = bat.instantiate()
-		b.global_position = generate_rand_pos(player_pos)
+		var starting_pos = generate_rand_pos()
+		
+		b.global_position = starting_pos
 		currentEnemies += 1
 		get_parent().add_child(b)
 		print("added")
 
-func generate_rand_pos(player_pos) -> Vector2:
-	var distance_from_player = randi_range(100, 200)
+func generate_rand_pos() -> Vector2:
+	var possible_x_pos = [-190, 1480]
 	
-	var value_modificator = 0
-	# Generar un numero aleatorio que no sea cero
-	while (value_modificator == 0):
-		value_modificator = randi_range(-1, 1)
-	
-	print("Val mod:" + str(value_modificator))
-	var enemy_x_pos = (player_pos.x * value_modificator) + distance_from_player
-	print("Player: " + str(player_pos))
-	print(enemy_x_pos)
-	
-	if (player_pos.x <= 3):
-		print("too far left")
-		enemy_x_pos = player_pos.x - 20
-	elif (player_pos.x >= 1250):
-		print("to far right")
-		enemy_x_pos = player_pos.x + 20
+	var y_pos = last_y_pos
+	while(abs(y_pos - last_y_pos) <= 85):
+		y_pos = randi_range(0, 700)
 		
-	return Vector2(player_pos.x + enemy_x_pos, player_pos.y)
+	var x_pos = possible_x_pos[randi() % possible_x_pos.size()]
+	
+	return Vector2(x_pos, y_pos)

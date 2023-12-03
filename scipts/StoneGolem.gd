@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var spawned = false
+var spawned = true
 var health = 82
 var player
 var SPEED = 0.5
@@ -14,11 +14,11 @@ var add_points = 30  #esto se puede cambiar a otro valor
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimatedSprite2D.animation = "spawn"
-	$AnimatedSprite2D.frame = 0
-	$AnimatedSprite2D.play()
+#	$AnimatedSprite2D.animation = "spawn"
+#	$AnimatedSprite2D.frame = 0
+#	$AnimatedSprite2D.play()
 	player = get_parent().get_node("Player")	
-	
+#
 	player_ui_controller = get_parent().get_node("PlayerUI")
 	
 func add_damage(new_damage: float) -> void:
@@ -43,16 +43,16 @@ func add_damage(new_damage: float) -> void:
 func _process(delta):
 	var finishedSpawnAnimation =$AnimatedSprite2D.frame == 7 and $AnimatedSprite2D.animation == "spawn"
 	var finishedDamageAnimation = $AnimatedSprite2D.frame == 3 and $AnimatedSprite2D.animation == "damage"
-	
-	if (finishedSpawnAnimation):
-		$AnimatedSprite2D.animation = "idle"
-		$AnimatedSprite2D.frame = 0
-		$AnimatedSprite2D.play()
-		spawned = true
-	
-	if (not spawned):
-		return
-	
+#
+#	if (finishedSpawnAnimation):
+#		$AnimatedSprite2D.animation = "idle"
+#		$AnimatedSprite2D.frame = 0
+#		$AnimatedSprite2D.play()
+#		spawned = true
+#
+#	if (not spawned):
+#		return
+#
 	if (finishedDamageAnimation):
 		$AnimatedSprite2D.animation = "idle"
 		$AnimatedSprite2D.frame = 0
@@ -72,5 +72,5 @@ func _process(delta):
 	if (Time.get_unix_time_from_system() <= self.last_attack + ATTACK_STALL):
 		velocity = Vector2(0, 0)
 	
-	move_and_collide((player_pos - global_position) * (SPEED * delta))
+	move_and_collide(velocity * SPEED)
 	

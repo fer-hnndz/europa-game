@@ -105,12 +105,10 @@ animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(6.76471, 8.52942)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mg1pw")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(7.64706, 9.11765)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7bq6p")

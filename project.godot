@@ -13,6 +13,7 @@ config_version=5
 config/name="Europa"
 run/main_scene="res://scenes/menus/login_menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -23,6 +24,7 @@ MenuMusic="*res://scenes/menus/menu_music.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=4
 window/stretch/mode="viewport"
 
 [input]

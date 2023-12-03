@@ -66,7 +66,45 @@ func _despawn():
 	$AnimatedSprite2D.play_backwards()
 	has_despawned = true
 	
+func spawn_new_gun_sound():
+	var audio_player = AudioStreamPlayer2D.new()
+	
+	audio_player.stream = preload("res://Sounds/fire-trimmed.wav")
+	audio_player.pitch_scale = 2
+	add_child(audio_player)
+	audio_player.play()
+	
+func spawn_new_heavy_gun_sound():
+	var audio_player = AudioStreamPlayer2D.new()
+	
+	audio_player.stream = preload("res://Sounds/fire-trimmed.wav")
+	add_child(audio_player)
+	audio_player.play()
+
+func spawn_new_dash_sound():
+	var audio_player = AudioStreamPlayer2D.new()
+	
+	audio_player.stream = preload("res://Sounds/dash.ogg")
+	add_child(audio_player)
+	audio_player.play()
+	
+func spawn_new_damage_sound():
+	var audio_player = AudioStreamPlayer2D.new()
+	
+	audio_player.stream = preload("res://Sounds/damage.ogg")
+	add_child(audio_player)
+	audio_player.play()
+	
+func process_unused_streams():
+	for c in get_children():
+		if (c.get_class() == "AudioStreamPlayer2D"):
+			print("found")
+			if (not c.playing):
+				print("del")
+				c.queue_free()
+			
 func _physics_process(delta):	
+	process_unused_streams()
 	current_animation = $AnimatedSprite2D.animation
 	current_frame = $AnimatedSprite2D.frame
 	
@@ -124,6 +162,7 @@ func deal_damage(damage: int, origin: Vector2):
 	if (invencibility_end > Time.get_unix_time_from_system()):
 		return
 	
+	spawn_new_damage_sound()
 	current_health -= damage;
 	
 	if current_health < 0:
@@ -171,6 +210,7 @@ func process_movement(delta):
 		dash_reloading.visible = false
 	
 	if Input.is_action_just_pressed("dash") and not keepDashing and canDash:
+		spawn_new_dash_sound()
 		print("pressed dash")
 		dash_end = Time.get_unix_time_from_system() + 0.3
 		dash_available = Time.get_unix_time_from_system() + 5
@@ -285,6 +325,8 @@ func process_playerFire(delta):
 			var player_pos = global_position
 			bullet_instance.global_position = Vector2(player_pos.x + 10, player_pos.y)
 			
+			spawn_new_gun_sound()
+			
 			get_parent().add_child(bullet_instance)
 			bullet_instance.setObjective(player_pos.direction_to(_get_laser_endpoint()) + _get_laser_endpoint())
 
@@ -293,6 +335,8 @@ func process_playerFire(delta):
 				$AnimatedSprite2D.flip_h = true
 			else:
 				$AnimatedSprite2D.flip_h = false
+			
+			
 				
 	var canHeavyFire = Time.get_unix_time_from_system() >= heavy_fire_available
 	
@@ -306,8 +350,9 @@ func process_playerFire(delta):
 		# Cargar la bala y ubicarla para disparar
 		var bullet_instance = preload("res://scenes/characters/HeavyBullet.tscn").instantiate()
 		var player_pos = global_position
-		bullet_instance.global_position = Vector2(player_pos.x + 10, player_pos.y)
+		bullet_instance.global_position = Vector2(player_pos.x + 20, player_pos.y)
 		
+		spawn_new_heavy_gun_sound()
 		get_parent().add_child(bullet_instance)
 		bullet_instance.setObjective(player_pos.direction_to(_get_laser_endpoint()) + _get_laser_endpoint())
 

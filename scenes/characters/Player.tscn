@@ -226,4 +226,6 @@ joint_mode = 2
 position = Vector2(2.94118, -1.76471)
 shape = SubResource("RectangleShape2D_0eec0")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

@@ -1,12 +1,11 @@
 extends Node
 
-var stage = 0
-var wave = 1
+var player_ui
 var min_enemies = 4
 var enemies
 var last_enemy_spawn = 0
 var last_y_pos = 0
-
+var spawned_initial_enemies = false
 # Called when the node enters the scene tree for the first time.
 
 var bat = preload("res://scenes/characters/Bat.tscn")
@@ -16,71 +15,87 @@ var astronaut = preload("res://scenes/characters/Astronaut.tscn")
 var currentEnemies = 0
 
 func _ready():
-	#gen_new_stage()
-	pass
-	
+	player_ui = get_parent().get_child(1)	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	# Verificar cantidad de enemigos
+	# Verificar cantidad de enemigos	
+	
+	if not spawned_initial_enemies:
+		spawned_initial_enemies = true
+		spawn_initial_enemies()
+		
+	# Actualizar la cantidad de enemigos actuales
 	
 	currentEnemies = 0
-	for n in get_parent().get_child_count():
-		var currentNode = get_parent().get_child(n)
-		#print("\t" + acurrentNode.name)
-		
-		if (not is_instance_of(currentNode, CharacterBody2D)):
-			continue
-		
-		if currentNode.name == "Player":
-			continue
-		
-		currentEnemies+=1
+	for el in get_parent().get_children():
+		if (el.get_class() == "CharacterBody2D"):
+			if not (el.get_name() == "Player"):
+				currentEnemies+=1
 	
+	if currentEnemies == 0:
+		print("Generando nuevos enemigos en base a score: " + str(player_ui.score))
+		spawn_enemies(player_ui.score)
 	
-	if (currentEnemies == 0):
-		#gen_new_stage()
-		print("Generando nueva stage...")
-		
-		wave +=1
-		if (wave > 3):
-			stage += 1
-		
-		
-		var upperEnemies = min_enemies * randi_range(stage, stage * 2) - stage * 0.25
-		enemies = randi_range(min_enemies, upperEnemies);
-		
-		spawn_enemies(enemies)
-
-func spawn_enemies(enemies: int):
-	var player_pos = get_parent().get_child(0).global_position
-	
-	print("Enemies to generate: " + str(enemies))
-	var enemiesLeft = enemies
-	
-	var newStoneGolems = randi_range(enemies * 0.16, enemies * 0.25)
-	enemiesLeft -= newStoneGolems
-	var newBats = enemiesLeft
-	
-	print("Generating " + str(newStoneGolems) + " golems")
-	
-	for i in range(newStoneGolems):
-		var g = stoneGolem.instantiate()
-		
-		g.global_position = generate_rand_pos()
-		currentEnemies += 1
-		get_parent().add_child(g)
-		
-	print("Generating: " + str(newBats) + " bats")
-	for i in range(newBats):
+func spawn_initial_enemies():
+	for i in range(4):
 		var b = bat.instantiate()
 		var starting_pos = generate_rand_pos()
 		
 		b.global_position = starting_pos
+		print("Enemigo generado en pos: " + str(starting_pos))
 		currentEnemies += 1
+		
 		get_parent().add_child(b)
-		print("added")
+	print("Generados")
+	
+	
 
+func spawn_enemies(score: int):
+	
+	var enemy_scenes = [
+		preload("res://scenes/characters/StoneGolem.tscn"),
+		preload("res://scenes/characters/Astronaut.tscn"),
+		preload("res://scenes/characters/Bat.tscn")
+	]
+
+	# Golems
+	while (score > 0):
+		var new_enemy = enemy_scenes[randi() % enemy_scenes.size()].instantiate()
+		new_enemy.global_position = generate_rand_pos()
+		
+		if (score - new_enemy.xp_cost >= 0):
+			currentEnemies += 1
+			get_parent().add_child(new_enemy)	
+			score -= new_enemy.xp_cost
+		else:
+			break
+		
+	
+	# Astronautas
+	while (true):
+		var new_enemy = astronaut.instantiate()
+		new_enemy.global_position = generate_rand_pos()
+		
+		if (score - new_enemy.xp_cost < 0):
+			break;
+		else:
+			currentEnemies += 1
+			get_parent().add_child(new_enemy)	
+			score -= new_enemy.xp_cost
+	
+	#Bat				
+	while (true):
+		var new_enemy = bat.instantiate()
+		new_enemy.global_position = generate_rand_pos()
+		
+		if (score - new_enemy.xp_cost < 0):
+			break;
+		else:
+			currentEnemies += 1
+			get_parent().add_child(new_enemy)	
+			score -= new_enemy.xp_cost	
+		
 func generate_rand_pos() -> Vector2:
 	var possible_x_pos = [-190, 1480]
 	

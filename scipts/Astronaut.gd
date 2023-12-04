@@ -8,8 +8,10 @@ var damage_caused = 3
 var ATTACK_STALL = 0.5
 var last_attack = 0
 
+var kill_xp = 6
+var xp_cost = 5
+
 var player_ui_controller
-var add_points = 25 #esto se puede cambiar a otro valor
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,7 +60,7 @@ func _process(delta):
 		$AnimatedSprite2D.play()
 		
 	if (health <= 0):
-		player_ui_controller.increase_score(add_points)
+		player_ui_controller.increase_score(kill_xp)
 		queue_free()
 	
 	if (player.current_health <= 0):

@@ -98,9 +98,7 @@ func spawn_new_damage_sound():
 func process_unused_streams():
 	for c in get_children():
 		if (c.get_class() == "AudioStreamPlayer2D"):
-			print("found")
 			if (not c.playing):
-				print("del")
 				c.queue_free()
 			
 func _physics_process(delta):	

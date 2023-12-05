@@ -8,7 +8,7 @@ var damage_caused = 4
 var ATTACK_STALL = 0.5
 var last_attack = 0
 
-var kill_xp = 12
+var kill_xp = 7
 var xp_cost = 8
 
 var player_ui_controller

@@ -167,7 +167,13 @@ func deal_damage(damage: int, origin: Vector2):
 		current_health = 0
 	
 	var knockback_direction = origin.direction_to(global_position)
-	var strength = (damage * damage * damage * damage * damage)
+	var strength
+	
+	if (damage == 2):
+		print("knock bat")
+		strength = 1000
+	else:
+		strength = (damage * damage * damage * damage * damage)
 	var knockback = knockback_direction * strength
 	
 	velocity = knockback

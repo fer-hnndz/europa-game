@@ -8,7 +8,7 @@ var damage_caused = 2
 var ATTACK_STALL = 0.5
 var last_attack = 0
 
-var kill_xp = 4
+var kill_xp = 1
 var xp_cost = 2
 
 var player_ui_controller
@@ -20,8 +20,9 @@ func _ready():
 #	$AnimatedSprite2D.frame = 0
 #	$AnimatedSprite2D.play()
 	player = get_parent().get_node("Player")	
-	
 	player_ui_controller = get_parent().get_node("PlayerUI")
+	$AnimatedSprite2D.animation = "idle"
+	$AnimatedSprite2D.play()
 	
 func add_damage(new_damage: float) -> void:
 	if (not spawned):

@@ -26,6 +26,8 @@ var dash_end = 0
 var current_animation
 var current_frame
 
+var last_blink_change = 0
+
 var heavy_fire_available = 0
 @onready var dash_timer = Timer.new()
 
@@ -129,9 +131,26 @@ func _physics_process(delta):
 	if (spawned == false):
 		return
 	
-	if (invencibility_end < Time.get_unix_time_from_system()):
+	# Handling de invencibilidad
+	if (invencibility_end > Time.get_unix_time_from_system()):
+		
+		if (last_blink_change + 0.1 < Time.get_unix_time_from_system()):
+			if ($AnimatedSprite2D.modulate.a == 1.0):
+				$AnimatedSprite2D.modulate = Color(Color.WHITE, 0.2)
+			else:
+				$AnimatedSprite2D.modulate = Color.WHITE
+			
+			last_blink_change = Time.get_unix_time_from_system()
+		
+		#$AnimatedSprite2D.modulate.a = 0.5 if Engine.get_frames_drawn() % 2 == 0 else 1.0
+#		if (Engine.get_frames_drawn() % 2 == 0):
+#			$AnimatedSprite2D.modulate = Color.WHITE
+#		else:
+#			$AnimatedSprite2D.modulate = Color(Color.WHITE, 0.6)
+		#$AnimatedSprite2D.modulate = Color(Color.WHITE, 0.7)
+	else:
 		$AnimatedSprite2D.modulate = Color.WHITE
-	
+		
 	if (current_health <= 0):
 		print("Tu ta muelto broder")
 		player_ui_controller.set_highscore_info(player_ui_controller.score)
@@ -180,7 +199,7 @@ func deal_damage(damage: int, origin: Vector2):
 	move_and_slide()
 	print("[Player.gd - deal_damag] aplicado")
 	invencibility_end = Time.get_unix_time_from_system() + 2.5
-	$AnimatedSprite2D.modulate = Color(Color.WHITE, 0.6)
+	#$AnimatedSprite2D.modulate = Color(Color.WHITE, 0.6)
 #
 #=================
 # Funciones de Laser

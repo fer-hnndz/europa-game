@@ -21,8 +21,7 @@ func _ready():
 func _process(delta):
 	# Verificar cantidad de enemigos	
 	
-	if not spawned_initial_enemies:
-		spawned_initial_enemies = true
+	if player_ui.score == 0 and currentEnemies == 0:
 		spawn_initial_enemies()
 		
 	# Actualizar la cantidad de enemigos actuales
@@ -61,6 +60,11 @@ func spawn_enemies(score: int):
 
 	# Golems
 	while (score > 0):
+		
+		if (currentEnemies >= 10):
+			print("MAX ENEMIES")
+			break;
+		
 		var new_enemy = enemy_scenes[randi() % enemy_scenes.size()].instantiate()
 		new_enemy.global_position = generate_rand_pos()
 		
@@ -70,31 +74,6 @@ func spawn_enemies(score: int):
 			score -= new_enemy.xp_cost
 		else:
 			break
-		
-	
-	# Astronautas
-	while (true):
-		var new_enemy = astronaut.instantiate()
-		new_enemy.global_position = generate_rand_pos()
-		
-		if (score - new_enemy.xp_cost < 0):
-			break;
-		else:
-			currentEnemies += 1
-			get_parent().add_child(new_enemy)	
-			score -= new_enemy.xp_cost
-	
-	#Bat				
-	while (true):
-		var new_enemy = bat.instantiate()
-		new_enemy.global_position = generate_rand_pos()
-		
-		if (score - new_enemy.xp_cost < 0):
-			break;
-		else:
-			currentEnemies += 1
-			get_parent().add_child(new_enemy)	
-			score -= new_enemy.xp_cost	
 		
 func generate_rand_pos() -> Vector2:
 	var possible_x_pos = [-190, 1480]

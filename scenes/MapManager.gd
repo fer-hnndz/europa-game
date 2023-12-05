@@ -1,10 +1,9 @@
 extends Node2D
 
-var level_duration = 1 * 60 + 15 # 1:15 
-#var level_duration = 5 #este es para motivos de prueba
+#var level_duration = 60 # 1:00
+var level_duration = 5 #este es para motivos de prueba
 var level_end = 0
 var currentMap = -1
-var last_player_health
 var last_exp
 var map_changes = 0
 
@@ -51,11 +50,8 @@ func _process(delta):
 	
 	if (player != null):
 		print("Saving player info")
-		last_player_health = player.current_health
 		var player_ui = get_child(0).get_child(1)
 		last_exp = 	int(player_ui.score)
-	
-	print("Health: " + str(last_player_health) + " | Last XP: " + str(last_exp))
 	
 	# Borrar el mapa actual
 	remove_child(get_child(0))
@@ -69,7 +65,6 @@ func _process(delta):
 		var new_map_player = loadedMap.get_child(0)
 		var new_map_ui = loadedMap.get_child(1)
 		
-		new_map_player.current_health = last_player_health
 		new_map_ui.score = last_exp
 	
 	

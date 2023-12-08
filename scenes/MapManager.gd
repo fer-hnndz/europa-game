@@ -1,7 +1,7 @@
 extends Node2D
 
-#var level_duration = 60 # 1:00
-var level_duration = 5 #este es para motivos de prueba
+var level_duration = 60 # 1:00
+#var level_duration = 5 #este es para motivos de prueba
 var level_end = 0
 var currentMap = -1
 var last_exp

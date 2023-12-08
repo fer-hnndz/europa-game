@@ -60,6 +60,12 @@ func _process(delta):
 		$AnimatedSprite2D.play()
 		
 	if (health <= 0):
+		var xp = preload("res://scenes/xp_indicator.tscn").instantiate()
+		xp.set_xp(kill_xp)
+		
+		xp.global_position = global_position
+		get_parent().add_child(xp)
+		
 		player_ui_controller.increase_score(kill_xp)
 		queue_free()
 	

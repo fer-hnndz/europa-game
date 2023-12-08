@@ -114,12 +114,10 @@ animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4.11765, 18.2353)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_mg1pw")
 
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(4.41176, 18.2353)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_7bq6p")

@@ -71,6 +71,7 @@ func _despawn():
 func spawn_new_gun_sound():
 	var audio_player = AudioStreamPlayer2D.new()
 	
+	audio_player.set_bus(&"Sfx")
 	audio_player.stream = preload("res://Sounds/fire-trimmed.wav")
 	audio_player.pitch_scale = 2
 	add_child(audio_player)
@@ -373,7 +374,7 @@ func process_playerFire(delta):
 		# Cargar la bala y ubicarla para disparar
 		var bullet_instance = preload("res://scenes/characters/HeavyBullet.tscn").instantiate()
 		var player_pos = global_position
-		bullet_instance.global_position = Vector2(player_pos.x + 20, player_pos.y)
+		bullet_instance.global_position = Vector2(player_pos.x + 5, player_pos.y - 20)
 		
 		spawn_new_heavy_gun_sound()
 		get_parent().add_child(bullet_instance)

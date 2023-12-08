@@ -14,19 +14,19 @@ script = ExtResource("1_pq1gk")
 
 [node name="MuteResumebtn" type="Button" parent="."]
 layout_mode = 2
-offset_left = 506.0
-offset_top = 291.0
-offset_right = 796.0
-offset_bottom = 351.0
+offset_left = 495.0
+offset_top = 453.0
+offset_right = 785.0
+offset_bottom = 513.0
 theme_override_font_sizes/font_size = 30
 text = "Sonido: encendido"
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 2
-offset_left = 571.0
-offset_top = 367.0
-offset_right = 731.0
-offset_bottom = 427.0
+offset_left = 495.0
+offset_top = 589.0
+offset_right = 785.0
+offset_bottom = 649.0
 theme_override_font_sizes/font_size = 30
 text = "Regresar"
 
@@ -38,6 +38,15 @@ offset_right = 721.0
 offset_bottom = 236.0
 scale = Vector2(2, 2)
 bus_name = "Master"
+
+[node name="Music Volume" parent="." instance=ExtResource("2_qmlnf")]
+layout_mode = 0
+offset_left = 566.0
+offset_top = 340.0
+offset_right = 723.0
+offset_bottom = 356.0
+scale = Vector2(2, 2)
+bus_name = "Music"
 
 [node name="LblTitulo" type="Label" parent="."]
 layout_mode = 0
@@ -55,7 +64,16 @@ offset_top = 212.0
 offset_right = 551.0
 offset_bottom = 260.0
 theme_override_font_sizes/font_size = 30
-text = "Volumen"
+text = "Master"
+
+[node name="LblVolumen2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 417.0
+offset_top = 325.0
+offset_right = 552.0
+offset_bottom = 373.0
+theme_override_font_sizes/font_size = 30
+text = "Musica"
 
 [connection signal="button_down" from="MuteResumebtn" to="." method="_on_mute_resume_button_down"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

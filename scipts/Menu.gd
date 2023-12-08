@@ -1,13 +1,15 @@
 extends Control
 
-@onready var music:AudioStreamPlayer = $"/root/MenuMusic"
-
 func _on_ready():
-	if (!music.playing):
-		music.play()
+	var bus_name = "Music"
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	AudioServer.set_bus_volume_db(bus_index, 0)
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file("res://scenes/MapManager.tscn")
+	var bus_name = "Music"
+	var bus_index = AudioServer.get_bus_index(bus_name)
+	AudioServer.set_bus_volume_db(bus_index, -15)
+	get_tree().change_scene_to_file("res://scenes/menus/Tutorial.tscn")
 
 
 func _on_options_pressed():

@@ -7,7 +7,6 @@ var currentMap = -1
 var last_exp
 var map_changes = 0
 
-@onready var music:AudioStreamPlayer = $"/root/MenuMusic"
 
 var maps = [
 	preload("res://scenes/Map1.tscn"),
@@ -18,7 +17,7 @@ var maps = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	music.stop()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

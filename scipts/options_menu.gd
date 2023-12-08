@@ -43,3 +43,5 @@ func _on_mute_resume_button_down():
 			musicChild.play(musicChild_pos)
 		elif musicChild2_pos > 0.0:
 			musicChild2.play(musicChild2_pos)
+		else:
+			music.play()

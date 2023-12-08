@@ -1,0 +1,144 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgkfwtpf0ne3h"]
+
+[ext_resource type="Texture2D" uid="uid://do2w5f4xx3y8g" path="res://Europa.png" id="1_321q2"]
+[ext_resource type="Script" path="res://scenes/menus/Tutorial.gd" id="1_caw2l"]
+[ext_resource type="Texture2D" uid="uid://dttj5l7dyoe1t" path="res://sprites/AllButtons.png" id="2_y2a1c"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_caw2l")
+
+[node name="Europa" type="Sprite2D" parent="."]
+position = Vector2(642, 120)
+texture = ExtResource("1_321q2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 267.0
+offset_right = 748.0
+offset_bottom = 312.0
+theme_override_font_sizes/font_size = 30
+text = "Click izquierdo: disparo"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 413.0
+offset_top = 325.0
+offset_right = 748.0
+offset_bottom = 370.0
+theme_override_font_sizes/font_size = 30
+text = "Click derecho: misil"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 414.0
+offset_top = 380.0
+offset_right = 594.0
+offset_bottom = 425.0
+theme_override_font_sizes/font_size = 30
+text = "Shift: dash"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 435.0
+offset_right = 761.0
+offset_bottom = 480.0
+theme_override_font_sizes/font_size = 30
+text = "Barra espaciadora: salto"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 490.0
+offset_right = 892.0
+offset_bottom = 535.0
+theme_override_font_sizes/font_size = 30
+text = "Barra espaciadora 2x: salto doble"
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 555.0
+offset_right = 1035.0
+offset_bottom = 600.0
+theme_override_font_sizes/font_size = 30
+text = "Flecha izquierda / A: moverse a la izquierda"
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 621.0
+offset_right = 999.0
+offset_bottom = 666.0
+theme_override_font_sizes/font_size = 30
+text = "Flecha derecha / D: moverse a la derecha"
+
+[node name="Shift" type="Sprite2D" parent="."]
+position = Vector2(342, 403)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y2a1c")
+region_enabled = true
+region_rect = Rect2(32.9999, 209.009, 30.1341, 13.2428)
+
+[node name="Barra espaciadora" type="Sprite2D" parent="."]
+position = Vector2(340, 458.5)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y2a1c")
+region_enabled = true
+region_rect = Rect2(145.052, 209.026, 29.999, 12.8374)
+
+[node name="Barra espaciadora2" type="Sprite2D" parent="."]
+position = Vector2(340, 509)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y2a1c")
+region_enabled = true
+region_rect = Rect2(145.052, 209.026, 29.999, 12.8374)
+
+[node name="A" type="Sprite2D" parent="."]
+position = Vector2(365, 576)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y2a1c")
+region_enabled = true
+region_rect = Rect2(0.945401, 160.891, 14.3238, 13.2428)
+
+[node name="D" type="Sprite2D" parent="."]
+position = Vector2(367, 644)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y2a1c")
+region_enabled = true
+region_rect = Rect2(32.728, 160.729, 14.459, 13.2428)
+
+[node name="Flecha izq" type="Sprite2D" parent="."]
+position = Vector2(321, 576)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y2a1c")
+region_enabled = true
+region_rect = Rect2(96.7862, 208.744, 14.5941, 13.5131)
+
+[node name="Flecha derecha" type="Sprite2D" parent="."]
+position = Vector2(319, 643)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y2a1c")
+region_enabled = true
+region_rect = Rect2(128.727, 208.674, 14.3239, 13.3779)
+
+[node name="Click izq" type="Sprite2D" parent="."]
+position = Vector2(368.5, 287)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y2a1c")
+region_enabled = true
+region_rect = Rect2(0.0793343, 320.675, 14.9995, 15.6751)
+
+[node name="Click derecho" type="Sprite2D" parent="."]
+position = Vector2(365.5, 347)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y2a1c")
+region_enabled = true
+region_rect = Rect2(16.1338, 320.756, 14.7292, 15.54)

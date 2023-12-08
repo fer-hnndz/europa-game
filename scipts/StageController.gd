@@ -10,7 +10,7 @@ var spawned_initial_enemies = false
 
 var bat = preload("res://scenes/characters/Bat.tscn")
 var stoneGolem = preload("res://scenes/characters/StoneGolem.tscn")
-var astronaut = preload("res://scenes/characters/Astronaut.tscn")
+var astronaut = preload("res://scenes/characters/FlyingEnemy.tscn")
 
 var currentEnemies = 0
 
@@ -54,7 +54,7 @@ func spawn_enemies(score: int):
 	
 	var enemy_scenes = [
 		preload("res://scenes/characters/StoneGolem.tscn"),
-		preload("res://scenes/characters/Astronaut.tscn"),
+		preload("res://scenes/characters/FlyingEnemy.tscn"),
 		preload("res://scenes/characters/Bat.tscn")
 	]
 
